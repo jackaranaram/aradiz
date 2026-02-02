@@ -1,6 +1,6 @@
-# Arqdiz - Sitio Web Corporativo
+# aradiz - Sitio Web Corporativo
 
-Sitio web corporativo B2B para Arqdiz Grupo Corporativo, especializado en fabricación, ejecución e instalación de soluciones a medida para proyectos de interior y obra.
+Sitio web corporativo B2B para aradiz Grupo Corporativo, especializado en fabricación, ejecución e instalación de soluciones a medida para proyectos de interior y obra.
 
 ## 🚀 Stack Tecnológico
 
@@ -17,7 +17,7 @@ Sitio web corporativo B2B para Arqdiz Grupo Corporativo, especializado en fabric
 ```bash
 # Clonar el repositorio
 git clone <repository-url>
-cd arqdiz-web
+cd aradiz
 
 # Instalar dependencias
 npm install
@@ -111,4 +111,4 @@ Configurar las variables de entorno de Firebase en Vercel Dashboard.
 
 ## 📞 Contacto
 
-Para más información sobre este proyecto, contacta a [email@arqdiz.com](mailto:email@arqdiz.com)
+Para más información sobre este proyecto, contacta a [email@aradiz.com](mailto:email@aradiz.com)

@@ -1,5 +1,5 @@
 /**
- * Arqdiz - Theme Configuration
+ * aradiz - Theme Configuration
  * Design tokens y configuración de tema
  */
 

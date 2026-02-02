@@ -49,12 +49,12 @@
 :root {
   --radius: 0.625rem;
   
-  /* Arqdiz Brand Colors */
-  --arqdiz-primary: #0E6F73;
-  --arqdiz-secondary: #4F6F3E;
-  --arqdiz-accent: #4FB6B1;
-  --arqdiz-text: #2E2E2E;
-  --arqdiz-background: #E6ECEB;
+  /* aradiz Brand Colors */
+  --aradiz-primary: #0E6F73;
+  --aradiz-secondary: #4F6F3E;
+  --aradiz-accent: #4FB6B1;
+  --aradiz-text: #2E2E2E;
+  --aradiz-background: #E6ECEB;
   
   /* Theme Colors - Light Mode */
   --background: oklch(0.93 0.01 180);  /* #E6ECEB */

@@ -49,7 +49,7 @@ export function AboutSection() {
                             Ejecución profesional para proyectos que demandan excelencia
                         </h2>
                         <p className="text-muted-foreground mb-6 leading-relaxed">
-                            En Arqdiz nos especializamos en la fabricación, ejecución e
+                            En aradiz nos especializamos en la fabricación, ejecución e
                             instalación de soluciones a medida para proyectos de interior y
                             obra. Trabajamos con empresas, estudios de arquitectura,
                             constructoras y desarrolladores inmobiliarios que buscan un

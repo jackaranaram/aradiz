@@ -1,15 +1,15 @@
 /**
- * Arqdiz - Site Configuration
+ * aradiz - Site Configuration
  * Configuración centralizada del sitio web
  */
 
 export const siteConfig = {
-  name: "Arqdiz",
+  name: "aradiz",
   tagline: "Grupo Corporativo",
   description:
     "Ejecución profesional de soluciones a medida para proyectos de interior y obra. Desde fabricación hasta instalación, con foco en cumplimiento técnico y eficiencia.",
-  url: "https://arqdiz.com",
-  author: "Arqdiz Grupo Corporativo",
+  url: "https://aradiz.com",
+  author: "aradiz Grupo Corporativo",
 
   // SEO
   keywords: [
@@ -26,7 +26,7 @@ export const siteConfig = {
   // Contacto
   contact: {
     phone: "+51 XXX XXX XXX", // Reemplazar con número real
-    email: "contacto@arqdiz.com",
+    email: "contacto@aradiz.com",
     whatsapp: "+51XXXXXXXXX", // Número de WhatsApp sin espacios
     whatsappMessage: "Hola, me interesa solicitar una cotización para un proyecto.",
     address: "Lima, Perú", // Reemplazar con dirección real

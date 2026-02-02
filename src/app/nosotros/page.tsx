@@ -6,7 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 
 export const metadata: Metadata = {
     title: "Sobre Nosotros",
-    description: "Conoce a Arqdiz, empresa especializada en fabricación, ejecución e instalación de soluciones a medida para proyectos corporativos.",
+    description: "Conoce a aradiz, empresa especializada en fabricación, ejecución e instalación de soluciones a medida para proyectos corporativos.",
 };
 
 const values = [
@@ -58,7 +58,7 @@ export default function AboutPage() {
                             Sobre Nosotros
                         </span>
                         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground mb-6">
-                            Somos <span className="text-primary">Arqdiz</span>
+                            Somos <span className="text-primary">aradiz</span>
                         </h1>
                         <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
                             Empresa especializada en la fabricación, ejecución e instalación
@@ -81,7 +81,7 @@ export default function AboutPage() {
                             </h2>
                             <div className="space-y-4 text-muted-foreground leading-relaxed">
                                 <p>
-                                    En Arqdiz, no nos dedicamos al diseño arquitectónico, sino a
+                                    En aradiz, no nos dedicamos al diseño arquitectónico, sino a
                                     la <strong className="text-foreground">ejecución profesional</strong> de las soluciones que
                                     nuestros clientes necesitan. Trabajamos con especificaciones
                                     técnicas precisas y nos comprometemos con el cumplimiento de
