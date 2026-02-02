@@ -38,14 +38,27 @@ export default function ContactPage() {
         setIsSubmitting(true);
         setError("");
 
+        console.log("Iniciando envío de formulario a Firestore...");
+        console.log("Config actual:", {
+            projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+            authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN
+        });
+
+        const timeoutPromise = new Promise((_, reject) =>
+            setTimeout(() => reject(new Error("Timeout: Firebase no responde tras 10 segundos")), 10000)
+        );
+
         try {
-            // Save to Firestore
-            await addDoc(collection(db, "leads"), {
+            // Save to Firestore with timeout
+            const addPromise = addDoc(collection(db, "leads"), {
                 ...formData,
                 createdAt: serverTimestamp(),
                 status: "nuevo",
             });
 
+            await Promise.race([addPromise, timeoutPromise]);
+
+            console.log("Documento guardado exitosamente");
             setIsSuccess(true);
             setFormData({
                 name: "",
@@ -55,15 +68,14 @@ export default function ContactPage() {
                 message: "",
             });
 
-            // Reset success message after 5 seconds
             setTimeout(() => {
                 setIsSuccess(false);
             }, 5000);
-        } catch (err) {
+        } catch (err: any) {
+            console.error("Error detallado Firebase:", err);
             setError(
-                "Hubo un error al enviar el mensaje. Por favor, intenta nuevamente o contáctanos por WhatsApp."
+                `Error: ${err.message || "Error desconocido"}. Por favor, contáctanos por WhatsApp.`
             );
-            console.error("Error saving lead:", err);
         } finally {
             setIsSubmitting(false);
         }
