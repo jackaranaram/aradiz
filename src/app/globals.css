@@ -48,36 +48,45 @@
 
 :root {
   --radius: 0.625rem;
-  
+
   /* aradiz Brand Colors */
   --aradiz-primary: #0E6F73;
   --aradiz-secondary: #4F6F3E;
   --aradiz-accent: #4FB6B1;
   --aradiz-text: #2E2E2E;
   --aradiz-background: #E6ECEB;
-  
+
   /* Theme Colors - Light Mode */
-  --background: oklch(0.93 0.01 180);  /* #E6ECEB */
-  --foreground: oklch(0.25 0.01 0);    /* #2E2E2E */
+  --background: oklch(0.93 0.01 180);
+  /* #E6ECEB */
+  --foreground: oklch(0.25 0.01 0);
+  /* #2E2E2E */
   --card: oklch(0.98 0.005 180);
   --card-foreground: oklch(0.25 0.01 0);
   --popover: oklch(0.98 0.005 180);
   --popover-foreground: oklch(0.25 0.01 0);
-  --primary: oklch(0.42 0.08 185);     /* #0E6F73 - Teal corporativo */
+  --primary: oklch(0.42 0.08 185);
+  /* #0E6F73 - Teal corporativo */
   --primary-foreground: oklch(0.98 0 0);
-  --secondary: oklch(0.45 0.07 130);   /* #4F6F3E - Verde oliva */
+  --secondary: oklch(0.45 0.07 130);
+  /* #4F6F3E - Verde oliva */
   --secondary-foreground: oklch(0.98 0 0);
   --muted: oklch(0.90 0.01 180);
   --muted-foreground: oklch(0.45 0.01 0);
-  --accent: oklch(0.68 0.10 185);      /* #4FB6B1 - Teal claro */
+  --accent: oklch(0.68 0.10 185);
+  /* #4FB6B1 - Teal claro */
   --accent-foreground: oklch(0.20 0.01 0);
   --destructive: oklch(0.577 0.245 27.325);
   --border: oklch(0.85 0.01 180);
   --input: oklch(0.85 0.01 180);
-  --ring: oklch(0.42 0.08 185);        /* Primary for focus rings */
-  --chart-1: oklch(0.42 0.08 185);     /* Primary */
-  --chart-2: oklch(0.45 0.07 130);     /* Secondary */
-  --chart-3: oklch(0.68 0.10 185);     /* Accent */
+  --ring: oklch(0.42 0.08 185);
+  /* Primary for focus rings */
+  --chart-1: oklch(0.42 0.08 185);
+  /* Primary */
+  --chart-2: oklch(0.45 0.07 130);
+  /* Secondary */
+  --chart-3: oklch(0.68 0.10 185);
+  /* Accent */
   --chart-4: oklch(0.55 0.08 160);
   --chart-5: oklch(0.60 0.06 145);
   --sidebar: oklch(0.95 0.01 180);
@@ -128,6 +137,7 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
