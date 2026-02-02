@@ -1,0 +1,20 @@
+rules_version='2'
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Reglas para la colección de leads del formulario de contacto
+    match /leads/{leadId} {
+      // Permitir solo creación de nuevos leads (desde el formulario)
+      allow create: if true;
+      
+      // Bloquear lectura, actualización y eliminación desde el cliente
+      // Solo administradores pueden leer/editar desde Firebase Console
+      allow read, update, delete: if false;
+    }
+    
+    // Bloquear acceso a cualquier otra colección
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

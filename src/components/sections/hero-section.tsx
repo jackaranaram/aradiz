@@ -8,7 +8,7 @@ import { siteConfig } from "@/config/site";
 
 export function HeroSection() {
     return (
-        <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-background via-background to-primary/5">
+        <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-linear-to-br from-background via-background to-primary/5">
             {/* Background Pattern */}
             <div className="absolute inset-0 opacity-[0.03]">
                 <div
