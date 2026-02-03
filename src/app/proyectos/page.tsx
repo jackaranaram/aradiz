@@ -2,7 +2,6 @@ import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
-import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
     title: "Proyectos",
@@ -85,98 +84,110 @@ const allProjects = [
     },
 ];
 
+import { CTASection } from "@/components/sections/cta-section";
+import { FancyButton } from "@/components/shared/buttons/fancy-button";
+import { cn } from "@/lib/utils";
+
 export default function ProjectsPage() {
     return (
         <>
             {/* Hero Section */}
-            <section className="relative py-20 md:py-28 bg-linear-to-br from-primary/5 via-background to-accent/5">
+            <section className="relative py-20 md:py-28 bg-background">
                 <div className="container mx-auto px-4 md:px-6">
                     <div className="max-w-3xl">
-                        <Link
-                            href="/"
-                            className="inline-flex items-center text-sm text-muted-foreground hover:text-primary mb-6 transition-colors"
-                        >
-                            <ArrowLeft className="mr-2 h-4 w-4" />
-                            Volver al inicio
-                        </Link>
+                        <span className="inline-block px-4 py-1.5 mb-6 text-sm font-medium text-primary bg-primary/10 rounded-full">
+                            Nuestros Proyectos
+                        </span>
                         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground mb-6">
-                            Nuestros <span className="text-primary">Proyectos</span>
+                            Proyectos destacados para el <span className="text-primary">sector corporativo e inmobiliario.</span>
                         </h1>
                         <p className="text-lg md:text-xl text-muted-foreground">
-                            Conoce algunos de los proyectos que hemos ejecutado para empresas,
-                            estudios de arquitectura, constructoras y desarrolladores
-                            inmobiliarios.
+                            Desde oficinas corporativas hasta espacios comerciales, cada proyecto refleja nuestro compromiso con la calidad, el diseño y la funcionalidad.
                         </p>
                     </div>
                 </div>
             </section>
 
-            {/* Projects Grid */}
+            {/* Projects Grid - Bento Style */}
             <section className="py-16 md:py-24">
                 <div className="container mx-auto px-4 md:px-6">
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {allProjects.map((project) => (
-                            <div
-                                key={project.id}
-                                className="group relative overflow-hidden rounded-2xl bg-card border border-border/50 hover:shadow-xl transition-all duration-300"
-                            >
-                                {/* Image */}
-                                <div className="relative aspect-[4/3] overflow-hidden">
-                                    <Image
-                                        src={project.image}
-                                        alt={project.title}
-                                        fill
-                                        className="object-cover transition-transform duration-500 group-hover:scale-110"
-                                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                                    />
-                                    {/* Overlay */}
-                                    <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/40 to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
+                    <div className="grid grid-cols-1 md:grid-cols-4 auto-rows-[300px] gap-4">
+                        {allProjects.map((project, index) => {
+                            // Define custom spans for Bento Grid
+                            const bentoSpans = [
+                                "md:col-span-2 md:row-span-2", // 1: Large
+                                "md:col-span-2 md:row-span-1", // 2: Horizontal
+                                "md:col-span-1 md:row-span-2", // 3: Tall
+                                "md:col-span-1 md:row-span-1", // 4: Small
+                                "md:col-span-2 md:row-span-1", // 5: Horizontal
+                                "md:col-span-1 md:row-span-1", // 6: Small
+                                "md:col-span-1 md:row-span-1", // 7: Small
+                                "md:col-span-1 md:row-span-1", // 8: Small
+                            ];
+                            const spanClass = bentoSpans[index % bentoSpans.length];
 
-                                    {/* Category Badge */}
-                                    <div className="absolute top-4 left-4">
-                                        <span className="px-3 py-1 text-xs font-medium bg-primary text-primary-foreground rounded-full">
-                                            {project.category}
-                                        </span>
+                            return (
+                                <div
+                                    key={project.id}
+                                    className={cn(
+                                        "group relative overflow-hidden bg-card border border-border/50 hover:shadow-2xl transition-all duration-500",
+                                        spanClass
+                                    )}
+                                >
+                                    {/* Image */}
+                                    <div className="absolute inset-0 z-0">
+                                        <Image
+                                            src={project.image}
+                                            alt={project.title}
+                                            fill
+                                            className="object-cover transition-transform duration-700 group-hover:scale-110"
+                                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                        />
+                                        {/* Overlay - Modern gradient */}
+                                        <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-500" />
                                     </div>
-                                </div>
 
-                                {/* Content */}
-                                <div className="p-6">
-                                    <h3 className="text-xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
-                                        {project.title}
-                                    </h3>
-                                    <p className="text-sm text-muted-foreground mb-3">
-                                        {project.description}
-                                    </p>
-                                    <div className="flex items-center gap-4 text-xs text-muted-foreground">
-                                        <span>{project.location}</span>
-                                        <span>•</span>
-                                        <span>{project.year}</span>
+                                    {/* Content - Absolute positioned */}
+                                    <div className="relative z-10 h-full flex flex-col justify-end p-6 md:p-8">
+                                        <div className="translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                                            {/* Category Badge */}
+                                            <div className="mb-3">
+                                                <span className="text-xs font-medium text-white/80 uppercase tracking-wider">
+                                                    {project.category}
+                                                </span>
+                                            </div>
+
+                                            <h3 className="text-xl md:text-2xl font-bold text-white mb-2 leading-tight">
+                                                {project.title}
+                                            </h3>
+
+                                            <div className="overflow-hidden h-0 group-hover:h-auto opacity-0 group-hover:opacity-100 transition-all duration-500 delay-100">
+                                                <p className="text-sm text-gray-300 mb-4 line-clamp-2">
+                                                    {project.description}
+                                                </p>
+                                                <div className="flex items-center gap-4 text-[11px] text-gray-400 uppercase tracking-wider font-medium">
+                                                    <span>{project.location}</span>
+                                                    <span className="w-1 h-1 bg-gray-600 rounded-full" />
+                                                    <span>{project.year}</span>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
+
+                                    {/* Hover effect glass shimmer */}
+                                    <div className="absolute inset-0 pointer-events-none bg-linear-to-tr from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                                 </div>
-                            </div>
-                        ))}
+                            );
+                        })}
                     </div>
                 </div>
             </section>
 
-            {/* CTA Section */}
-            <section className="py-20 md:py-28 bg-card">
-                <div className="container mx-auto px-4 md:px-6">
-                    <div className="max-w-3xl mx-auto text-center">
-                        <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-                            ¿Listo para iniciar tu proyecto?
-                        </h2>
-                        <p className="text-lg text-muted-foreground mb-8">
-                            Trabajemos juntos para hacer realidad tu visión. Contáctanos para
-                            una cotización personalizada.
-                        </p>
-                        <Button asChild size="lg">
-                            <Link href="/contacto">Solicitar Cotización</Link>
-                        </Button>
-                    </div>
-                </div>
-            </section>
+            <CTASection
+                title="¿Listo para iniciar tu proyecto?"
+                description="Trabajemos juntos para hacer realidad tu visión. Contáctanos para una cotización personalizada."
+                className="bg-card"
+            />
         </>
     );
 }

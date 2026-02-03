@@ -4,11 +4,12 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { FancyButton } from "@/components/shared/buttons/fancy-button";
 import { siteConfig } from "@/config/site";
 
 export function HeroSection() {
     return (
-        <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-linear-to-br from-background via-background to-primary/5">
+        <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-linear-to-bt from-background via-background to-primary/5">
             {/* Background Pattern */}
             <div className="absolute inset-0 opacity-[0.03]">
                 <div
@@ -57,17 +58,17 @@ export function HeroSection() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: 0.3 }}
-                        className="flex flex-col sm:flex-row gap-4 justify-center"
+                        className="flex flex-col sm:flex-row gap-8 justify-center items-center"
                     >
-                        <Button asChild size="lg" className="text-base">
+                        <FancyButton asChild variant="primary">
                             <Link href="/contacto">
                                 Solicitar Cotización
                                 <ArrowRight className="ml-2 h-5 w-5" />
                             </Link>
-                        </Button>
-                        <Button asChild variant="outline" size="lg" className="text-base">
+                        </FancyButton>
+                        <FancyButton asChild variant="dark">
                             <Link href="/proyectos">Ver Proyectos</Link>
-                        </Button>
+                        </FancyButton>
                     </motion.div>
                 </div>
             </div>

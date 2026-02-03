@@ -1,10 +1,8 @@
 import { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
-import { Blinds, Armchair, PanelTop, Wrench, CheckCircle, ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { siteConfig } from "@/config/site";
+import { Blinds, Armchair, PanelTop, Wrench, CheckCircle } from "lucide-react";
+import { FancyButton } from "@/components/shared/buttons/fancy-button";
+import { CTASection } from "@/components/sections/cta-section";
 
 export const metadata: Metadata = {
     title: "Servicios",
@@ -74,11 +72,12 @@ const services = [
     },
 ];
 
+
 export default function ServicesPage() {
     return (
         <>
             {/* Hero Section */}
-            <section className="relative py-20 md:py-28 bg-linear-to-br from-primary/5 via-background to-secondary/5">
+            <section className="relative py-20 md:py-28 bg-background">
                 <div className="container mx-auto px-4 md:px-6">
                     <div className="max-w-3xl">
                         <span className="inline-block px-4 py-1.5 mb-6 text-sm font-medium text-primary bg-primary/10 rounded-full">
@@ -92,12 +91,6 @@ export default function ServicesPage() {
                             Ofrecemos servicios especializados con enfoque en ejecución,
                             precisión y cumplimiento técnico para proyectos corporativos.
                         </p>
-                        <Button asChild size="lg">
-                            <Link href="/contacto">
-                                Solicitar Cotización
-                                <ArrowRight className="ml-2 h-5 w-5" />
-                            </Link>
-                        </Button>
                     </div>
                 </div>
             </section>
@@ -136,9 +129,9 @@ export default function ServicesPage() {
                                         ))}
                                     </div>
 
-                                    <Button asChild variant={isEven ? "default" : "outline"}>
+                                    <FancyButton asChild variant={isEven ? "dark" : "primary"}>
                                         <Link href="/contacto">Consultar sobre este servicio</Link>
-                                    </Button>
+                                    </FancyButton>
                                 </div>
 
                                 {/* Image Placeholder */}
@@ -156,38 +149,10 @@ export default function ServicesPage() {
                 );
             })}
 
-            {/* CTA Section */}
-            <section className="py-20 md:py-28 bg-primary">
-                <div className="container mx-auto px-4 md:px-6">
-                    <div className="max-w-3xl mx-auto text-center">
-                        <h2 className="text-3xl md:text-4xl font-bold text-primary-foreground mb-6">
-                            ¿Necesitas una solución a medida?
-                        </h2>
-                        <p className="text-lg text-primary-foreground/80 mb-8">
-                            Contáctanos para una consulta personalizada. Analizamos tus
-                            necesidades y te ofrecemos la mejor solución técnica.
-                        </p>
-                        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                            <Button
-                                asChild
-                                size="lg"
-                                variant="secondary"
-                                className="bg-white text-primary hover:bg-white/90"
-                            >
-                                <Link href="/contacto">Solicitar Cotización</Link>
-                            </Button>
-                            <Button
-                                asChild
-                                size="lg"
-                                variant="outline"
-                                className="border-white text-white hover:bg-white/10"
-                            >
-                                <Link href="/proyectos">Ver Proyectos</Link>
-                            </Button>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            <CTASection
+                title="¿Necesitas una solución a medida?"
+                description="Contáctanos para una consulta personalizada. Analizamos tus necesidades y te ofrecemos la mejor solución técnica."
+            />
         </>
     );
 }

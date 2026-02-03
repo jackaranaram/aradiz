@@ -1,8 +1,8 @@
 import { Metadata } from "next";
-import Link from "next/link";
-import { Target, Users, Award, TrendingUp, CheckCircle2, ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Target, Users, Award, TrendingUp, CheckCircle2 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+
+import { CTASection } from "@/components/sections/cta-section";
 
 export const metadata: Metadata = {
     title: "Sobre Nosotros",
@@ -51,7 +51,7 @@ export default function AboutPage() {
     return (
         <>
             {/* Hero Section */}
-            <section className="relative py-20 md:py-28 bg-linear-to-br from-primary/5 via-background to-secondary/5">
+            <section className="relative py-20 md:py-28 bg-background">
                 <div className="container mx-auto px-4 md:px-6">
                     <div className="max-w-4xl">
                         <span className="inline-block px-4 py-1.5 mb-6 text-sm font-medium text-primary bg-primary/10 rounded-full">
@@ -179,41 +179,10 @@ export default function AboutPage() {
                 </div>
             </section>
 
-            {/* CTA Section */}
-            <section className="py-20 md:py-28 bg-primary">
-                <div className="container mx-auto px-4 md:px-6">
-                    <div className="max-w-3xl mx-auto text-center">
-                        <h2 className="text-3xl md:text-4xl font-bold text-primary-foreground mb-6">
-                            Trabajemos juntos en tu próximo proyecto
-                        </h2>
-                        <p className="text-lg text-primary-foreground/80 mb-8">
-                            Contáctanos para conversar sobre cómo podemos ayudarte a ejecutar
-                            tu proyecto con la calidad y profesionalismo que necesitas.
-                        </p>
-                        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                            <Button
-                                asChild
-                                size="lg"
-                                variant="secondary"
-                                className="bg-white text-primary hover:bg-white/90"
-                            >
-                                <Link href="/contacto">
-                                    Solicitar Cotización
-                                    <ArrowRight className="ml-2 h-5 w-5" />
-                                </Link>
-                            </Button>
-                            <Button
-                                asChild
-                                size="lg"
-                                variant="outline"
-                                className="border-white text-white hover:bg-white/10"
-                            >
-                                <Link href="/proyectos">Ver Proyectos</Link>
-                            </Button>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            <CTASection
+                title="Trabajemos juntos en tu próximo proyecto"
+                description="Contáctanos para conversar sobre cómo podemos ayudarte a ejecutar tu proyecto con la calidad y profesionalismo que necesitas."
+            />
         </>
     );
 }

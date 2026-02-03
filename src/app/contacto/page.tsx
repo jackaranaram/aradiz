@@ -109,7 +109,7 @@ export default function ContactPage() {
     return (
         <>
             {/* Hero Section */}
-            <section className="relative py-20 md:py-28 bg-linear-to-br from-primary/5 via-background to-accent/5">
+            <section className="relative py-20 md:py-28 bg-background">
                 <div className="container mx-auto px-4 md:px-6">
                     <div className="max-w-3xl">
                         <span className="inline-block px-4 py-1.5 mb-6 text-sm font-medium text-primary bg-primary/10 rounded-full">
@@ -166,17 +166,17 @@ export default function ContactPage() {
                                 })}
                             </div>
 
-                            <Card className="bg-primary text-primary-foreground border-0">
+                            <Card className="bg-secondary text-secondary-foreground border-0">
                                 <CardContent className="p-6">
                                     <h3 className="font-semibold mb-2">
                                         ¿Prefieres WhatsApp?
                                     </h3>
-                                    <p className="text-sm text-primary-foreground/80 mb-4">
+                                    <p className="text-sm text-secondary-foreground/80 mb-4">
                                         Contáctanos directamente y recibe una respuesta inmediata.
                                     </p>
                                     <Button
                                         asChild
-                                        variant="secondary"
+                                        variant="light"
                                         size="sm"
                                         className="w-full"
                                     >
@@ -286,6 +286,7 @@ export default function ContactPage() {
                                             <Button
                                                 type="submit"
                                                 size="lg"
+                                                variant="secondary"
                                                 className="w-full"
                                                 disabled={isSubmitting}
                                             >

@@ -7,13 +7,14 @@ import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { siteConfig } from "@/config/site";
 import { Button } from "@/components/ui/button";
+import { FancyButton } from "@/components/shared/buttons/fancy-button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 export function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur-sm supports-backdrop-filter:bg-background/60">
+        <header className="sticky top-0 z-50 w-full border-border/40 bg-transparent backdrop-blur-sm supports-backdrop-filter:bg-transparent/60">
             <nav className="container mx-auto flex h-20 items-center justify-between px-4 md:px-6">
                 {/* Logo */}
                 <Link href="/" className="flex items-center gap-2">
@@ -38,9 +39,9 @@ export function Navbar() {
                             {item.name}
                         </Link>
                     ))}
-                    <Button asChild>
+                    <FancyButton asChild variant="primary" size="sm">
                         <Link href="/contacto">Solicitar Cotización</Link>
-                    </Button>
+                    </FancyButton>
                 </div>
 
                 {/* Mobile Navigation */}

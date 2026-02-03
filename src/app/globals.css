@@ -51,29 +51,27 @@
 
   /* aradiz Brand Colors */
   --aradiz-primary: #0E6F73;
-  --aradiz-secondary: #4F6F3E;
+  --aradiz-secondary: #2F4F4F;
   --aradiz-accent: #4FB6B1;
   --aradiz-text: #2E2E2E;
   --aradiz-background: #E6ECEB;
 
   /* Theme Colors - Light Mode */
-  --background: oklch(0.93 0.01 180);
-  /* #E6ECEB */
-  --foreground: oklch(0.25 0.01 0);
-  /* #2E2E2E */
+  --background: var(--aradiz-background);
+  --foreground: var(--aradiz-text);
   --card: oklch(0.98 0.005 180);
   --card-foreground: oklch(0.25 0.01 0);
   --popover: oklch(0.98 0.005 180);
   --popover-foreground: oklch(0.25 0.01 0);
-  --primary: oklch(0.42 0.08 185);
+  --primary: var(--aradiz-primary);
   /* #0E6F73 - Teal corporativo */
   --primary-foreground: oklch(0.98 0 0);
-  --secondary: oklch(0.45 0.07 130);
-  /* #4F6F3E - Verde oliva */
+  --secondary: var(--aradiz-secondary);
+  /* #2F4F4F - Deep Slate / Dark Forest */
   --secondary-foreground: oklch(0.98 0 0);
   --muted: oklch(0.90 0.01 180);
   --muted-foreground: oklch(0.45 0.01 0);
-  --accent: oklch(0.68 0.10 185);
+  --accent: var(--aradiz-accent);
   /* #4FB6B1 - Teal claro */
   --accent-foreground: oklch(0.20 0.01 0);
   --destructive: oklch(0.577 0.245 27.325);
@@ -83,7 +81,7 @@
   /* Primary for focus rings */
   --chart-1: oklch(0.42 0.08 185);
   /* Primary */
-  --chart-2: oklch(0.45 0.07 130);
+  --chart-2: var(--aradiz-secondary);
   /* Secondary */
   --chart-3: oklch(0.68 0.10 185);
   /* Accent */
@@ -142,3 +140,7 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* --- Premium Button Styles Consolidation --- */
+
+/* Ripple Variant */
