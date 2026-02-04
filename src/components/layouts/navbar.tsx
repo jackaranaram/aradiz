@@ -1,10 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
 import { siteConfig } from "@/config/site";
 import { Button } from "@/components/ui/button";
 import { FancyButton } from "@/components/shared/buttons/fancy-button";
@@ -14,18 +12,16 @@ export function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <header className="sticky top-0 z-50 w-full border-border/40 bg-transparent backdrop-blur-sm supports-backdrop-filter:bg-transparent/60">
+        <header className="fixed top-0 z-50 w-full bg-transparent backdrop-blur-sm supports-backdrop-filter:bg-transparent">
             <nav className="container mx-auto flex h-20 items-center justify-between px-4 md:px-6">
                 {/* Logo */}
-                <Link href="/" className="flex items-center gap-2">
-                    <Image
-                        src="/images/logo.png"
-                        alt={`${siteConfig.name} - ${siteConfig.tagline}`}
-                        width={160}
-                        height={50}
-                        className="h-12 w-auto"
-                        priority
-                    />
+                <Link href="/" className="flex flex-col leading-none">
+                    <span className="text-2xl font-bold tracking-tighter text-primary">
+                        aradiz
+                    </span>
+                    <span className="text-[10px] font-medium tracking-[0.2em] text-foreground/80 uppercase">
+                        Grupo Corporativo
+                    </span>
                 </Link>
 
                 {/* Desktop Navigation */}
@@ -34,7 +30,7 @@ export function Navbar() {
                         <Link
                             key={item.href}
                             href={item.href}
-                            className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+                            className="text-xs font-medium text-foreground transition-colors hover:text-primary uppercase"
                         >
                             {item.name}
                         </Link>
@@ -54,13 +50,14 @@ export function Navbar() {
                     </SheetTrigger>
                     <SheetContent side="right" className="w-[300px] sm:w-[400px]">
                         <div className="flex flex-col gap-6 mt-8">
-                            <Image
-                                src="/images/logo.png"
-                                alt={siteConfig.name}
-                                width={140}
-                                height={45}
-                                className="h-10 w-auto"
-                            />
+                            <Link href="/" onClick={() => setIsOpen(false)} className="flex flex-col leading-none">
+                                <span className="text-xl font-bold tracking-tighter text-primary uppercase">
+                                    aradiz
+                                </span>
+                                <span className="text-[9px] font-medium tracking-[0.2em] text-foreground/80 uppercase">
+                                    Grupo Corporativo
+                                </span>
+                            </Link>
                             <nav className="flex flex-col gap-4">
                                 {siteConfig.navigation.map((item) => (
                                     <Link

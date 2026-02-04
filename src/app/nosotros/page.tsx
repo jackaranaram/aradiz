@@ -51,7 +51,7 @@ export default function AboutPage() {
     return (
         <>
             {/* Hero Section */}
-            <section className="relative py-20 md:py-28 bg-background">
+            <section className="relative py-16 bg-background mt-28">
                 <div className="container mx-auto px-4 md:px-6">
                     <div className="max-w-4xl">
                         <span className="inline-block px-4 py-1.5 mb-6 text-sm font-medium text-primary bg-primary/10 rounded-full">
@@ -131,7 +131,7 @@ export default function AboutPage() {
                             return (
                                 <Card
                                     key={value.title}
-                                    className="border-border/50 hover:shadow-lg transition-shadow"
+                                    className="border-border/50"
                                 >
                                     <CardContent className="p-6">
                                         <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">

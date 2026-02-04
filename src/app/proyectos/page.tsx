@@ -92,7 +92,7 @@ export default function ProjectsPage() {
     return (
         <>
             {/* Hero Section */}
-            <section className="relative py-20 md:py-28 bg-background">
+            <section className="relative py-16 bg-background mt-28">
                 <div className="container mx-auto px-4 md:px-6">
                     <div className="max-w-3xl">
                         <span className="inline-block px-4 py-1.5 mb-6 text-sm font-medium text-primary bg-primary/10 rounded-full">
@@ -186,7 +186,6 @@ export default function ProjectsPage() {
             <CTASection
                 title="¿Listo para iniciar tu proyecto?"
                 description="Trabajemos juntos para hacer realidad tu visión. Contáctanos para una cotización personalizada."
-                className="bg-card"
             />
         </>
     );
