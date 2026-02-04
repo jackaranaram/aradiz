@@ -115,7 +115,7 @@ export default function ContactPage() {
                         <span className="inline-block px-4 py-1.5 mb-6 text-sm font-medium text-primary bg-primary/10 rounded-full">
                             Contacto
                         </span>
-                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground mb-6">
+                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground mb-6 uppercase">
                             Conversemos sobre tu{" "}
                             <span className="text-primary">proyecto</span>
                         </h1>

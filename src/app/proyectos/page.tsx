@@ -95,22 +95,23 @@ export default function ProjectsPage() {
             <section className="relative py-16 bg-background mt-28">
                 <div className="container mx-auto px-4 md:px-6">
                     <div className="max-w-3xl">
-                        <span className="inline-block px-4 py-1.5 mb-6 text-sm font-medium text-primary bg-primary/10 rounded-full">
-                            Nuestros Proyectos
-                        </span>
-                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground mb-6">
+
+                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground mb-6 uppercase">
                             Proyectos destacados para el <span className="text-primary">sector corporativo e inmobiliario.</span>
                         </h1>
                         <p className="text-lg md:text-xl text-muted-foreground">
                             Desde oficinas corporativas hasta espacios comerciales, cada proyecto refleja nuestro compromiso con la calidad, el diseño y la funcionalidad.
                         </p>
+                        <span className="inline-block px-2 py-1.5 mb-2 text-sm font-medium text-primary-foreground bg-secondary/20 uppercase mt-6">
+                            Nuestros Proyectos
+                        </span>
                     </div>
                 </div>
             </section>
 
             {/* Projects Grid - Bento Style */}
             <section className="py-16 md:py-24">
-                <div className="container mx-auto px-4 md:px-6">
+                <div className="w-full mx-auto px-4 md:px-6">
                     <div className="grid grid-cols-1 md:grid-cols-4 auto-rows-[300px] gap-4">
                         {allProjects.map((project, index) => {
                             // Define custom spans for Bento Grid

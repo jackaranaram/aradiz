@@ -32,67 +32,52 @@ const features = [
 
 export function AboutSection() {
     return (
-        <section className="py-20 md:py-28 bg-card">
-            <div className="container mx-auto px-4 md:px-6">
-                <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-                    {/* Content */}
-                    <motion.div
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6 }}
-                    >
-                        <span className="text-sm font-semibold uppercase tracking-wider text-primary mb-3 block">
-                            Sobre Nosotros
-                        </span>
-                        <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-                            Ejecución profesional para proyectos que demandan excelencia
-                        </h2>
-                        <p className="text-muted-foreground mb-6 leading-relaxed">
-                            En aradiz nos especializamos en la fabricación, ejecución e
-                            instalación de soluciones a medida para proyectos de interior y
-                            obra. Trabajamos con empresas, estudios de arquitectura,
-                            constructoras y desarrolladores inmobiliarios que buscan un
-                            socio confiable para la ejecución técnica de sus proyectos.
-                        </p>
-                        <p className="text-muted-foreground leading-relaxed">
-                            Nuestro enfoque está en el cumplimiento técnico, la precisión y
-                            la eficiencia, entregando resultados que cumplen con las
-                            especificaciones más exigentes del mercado B2B.
-                        </p>
-                    </motion.div>
+        <section className="w-full">
+            <div className="relative w-full">
+                {/* Image Side - Takes full width */}
+                <div className="relative h-[500px] md:h-[550px] w-full">
+                    <div className="absolute inset-0 bg-linear-to-br from-primary/10 via-secondary/10 to-accent/20">
+                        {/* Placeholder - Replace with actual image */}
+                        <div className="w-full h-full flex items-center justify-center">
+                            <Users className="w-32 h-32 text-primary/30" />
+                        </div>
+                    </div>
 
-                    {/* Features Grid */}
+                    {/* Content Panel - Overlays on right side */}
                     <motion.div
                         initial={{ opacity: 0, x: 20 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
-                        transition={{ duration: 0.6, delay: 0.2 }}
-                        className="grid sm:grid-cols-2 gap-6"
+                        transition={{ duration: 0.6 }}
+                        className="absolute top-0 right-0 w-full md:w-[65%] lg:w-[60%] h-full bg-linear-to-b from-background via-background to-white text-white p-8 md:p-12 lg:p-16 flex flex-col justify-center"
                     >
-                        {features.map((feature, index) => (
-                            <motion.div
-                                key={feature.title}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.4, delay: index * 0.1 }}
-                                className="p-6 rounded-xl bg-background border border-border/50"
-                            >
-                                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
-                                    <feature.icon className="w-6 h-6 text-primary" />
-                                </div>
-                                <h3 className="font-semibold text-foreground mb-2">
-                                    {feature.title}
-                                </h3>
-                                <p className="text-sm text-muted-foreground leading-relaxed">
-                                    {feature.description}
+                        <div className="max-w-3xl">
+                            <span className="text-sm font-semibold uppercase tracking-wider text-primary mb-3 block">
+                                Sobre Nosotros
+                            </span>
+                            <h2 className="text-3xl md:text-4xl font-bold mb-6 leading-tight text-foreground">
+                                Ejecución profesional para proyectos que demandan <span className="bg-primary text-white px-2">excelencia</span>
+                            </h2>
+
+                            <div className="space-y-4 text-base md:text-lg text-muted-foreground leading-relaxed">
+                                <p>
+                                    En aradiz nos especializamos en la fabricación, ejecución e
+                                    instalación de soluciones a medida para proyectos de interior y
+                                    obra. Trabajamos con empresas, estudios de arquitectura,
+                                    constructoras y desarrolladores inmobiliarios que buscan un
+                                    socio confiable para la ejecución técnica de sus proyectos.
                                 </p>
-                            </motion.div>
-                        ))}
+                                <p>
+                                    Nuestro enfoque está en el cumplimiento técnico, la precisión y
+                                    la eficiencia, entregando resultados que cumplen con las
+                                    especificaciones más exigentes del mercado B2B.
+                                </p>
+                            </div>
+                        </div>
                     </motion.div>
                 </div>
             </div>
+
         </section>
     );
 }

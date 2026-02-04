@@ -51,14 +51,12 @@ export default function AboutPage() {
     return (
         <>
             {/* Hero Section */}
-            <section className="relative py-16 bg-background mt-28">
+            <section className="relative py-20 bg-background mt-18">
                 <div className="container mx-auto px-4 md:px-6">
                     <div className="max-w-4xl">
-                        <span className="inline-block px-4 py-1.5 mb-6 text-sm font-medium text-primary bg-primary/10 rounded-full">
-                            Sobre Nosotros
-                        </span>
-                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground mb-6">
-                            Somos <span className="text-primary">aradiz</span>
+
+                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground mb-6 uppercase">
+                            Sobre <span className="text-primary">nosotros</span>
                         </h1>
                         <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
                             Empresa especializada en la fabricación, ejecución e instalación
@@ -67,45 +65,51 @@ export default function AboutPage() {
                             con empresas, estudios de arquitectura, constructoras y
                             desarrolladores inmobiliarios.
                         </p>
+
                     </div>
                 </div>
             </section>
 
             {/* Mission Section */}
-            <section className="py-16 md:py-24">
-                <div className="container mx-auto px-4 md:px-6">
-                    <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-                        <div>
-                            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-                                Nuestra forma de trabajo
-                            </h2>
-                            <div className="space-y-4 text-muted-foreground leading-relaxed">
-                                <p>
-                                    En aradiz, no nos dedicamos al diseño arquitectónico, sino a
-                                    la <strong className="text-foreground">ejecución profesional</strong> de las soluciones que
-                                    nuestros clientes necesitan. Trabajamos con especificaciones
-                                    técnicas precisas y nos comprometemos con el cumplimiento de
-                                    plazos y estándares de calidad.
-                                </p>
-                                <p>
-                                    Nuestro enfoque está en la <strong className="text-foreground">fabricación e instalación</strong> de
-                                    cortinas técnicas, mobiliario a medida en melamina, sistemas
-                                    de vidrio y otras soluciones para proyectos corporativos y de
-                                    obra.
-                                </p>
-                                <p>
-                                    Entendemos las necesidades del mercado B2B y nos
-                                    posicionamos como un socio confiable para la ejecución
-                                    técnica de proyectos que demandan precisión, profesionalismo
-                                    y resultados garantizados.
-                                </p>
+            <section className=" w-full">
+                <div className="relative w-full">
+                    {/* Image Side - Takes left portion */}
+                    <div className="relative h-[500px] md:h-[600px] w-full">
+                        <div className="absolute inset-0 bg-linear-to-br from-primary/20 via-secondary/20 to-accent/20">
+                            {/* Placeholder - Replace with actual image */}
+                            <div className="w-full h-full flex items-center justify-center">
+                                <Users className="w-32 h-32 text-primary/30" />
                             </div>
                         </div>
 
-                        {/* Image Placeholder */}
-                        <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-linear-to-br from-primary/10 via-secondary/10 to-accent/10">
-                            <div className="absolute inset-0 flex items-center justify-center">
-                                <Users className="w-32 h-32 text-primary/20" />
+                        {/* Content Panel - Overlays on right side */}
+                        <div className="absolute top-0 right-0 w-full md:w-[65%] lg:w-[60%] h-full bg-[#1a1a1a] text-white p-8 md:p-12 lg:p-16 flex flex-col justify-center md:translate-x-0">
+                            <div className="max-w-2xl">
+                                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight">
+                                    Nuestra forma de <span className="bg-primary text-white px-2 py-1">trabajo</span>
+                                </h2>
+
+                                <div className="space-y-4 text-base md:text-lg text-gray-300 leading-relaxed">
+                                    <p>
+                                        En aradiz, no nos dedicamos al diseño arquitectónico, sino a
+                                        la <strong className="text-white">ejecución profesional</strong> de las soluciones que
+                                        nuestros clientes necesitan. Trabajamos con especificaciones
+                                        técnicas precisas y nos comprometemos con el cumplimiento de
+                                        plazos y estándares de calidad.
+                                    </p>
+                                    <p>
+                                        Nuestro enfoque está en la <strong className="text-white">fabricación e instalación</strong> de
+                                        cortinas técnicas, mobiliario a medida en melamina, sistemas
+                                        de vidrio y otras soluciones para proyectos corporativos y de
+                                        obra.
+                                    </p>
+                                    <p>
+                                        Entendemos las necesidades del mercado B2B y nos
+                                        posicionamos como un socio confiable para la ejecución
+                                        técnica de proyectos que demandan precisión, profesionalismo
+                                        y resultados garantizados.
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>

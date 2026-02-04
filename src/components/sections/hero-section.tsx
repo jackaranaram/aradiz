@@ -68,15 +68,15 @@ export function HeroSection() {
 
 
     return (
-        <section className="relative min-h-screen flex items-end justify-start overflow-hidden bg-foreground">
+        <section className="relative min-h-screen flex items-end justify-start overflow-hidden">
 
             {/* Carousel Container */}
-            <div className="w-full h-[100vh] relative z-10 overflow-hidden">
+            <div className="h-screen relative z-10 overflow-hidden">
                 {/* Track del carrusel - Contiene TODAS las imágenes duplicadas */}
                 <motion.div
-                    className="flex h-full gap-4"
+                    className="flex h-full"
                     animate={{
-                        x: `calc(${offset - carouselImages.length} * (100vw - 5rem + 16px))`,
+                        x: `calc(${offset - carouselImages.length} * (100vw - 6rem))`,
                     }}
                     transition={
                         isTransitioning
@@ -95,9 +95,9 @@ export function HeroSection() {
                     {infiniteImages.map((image, index) => (
                         <div
                             key={`${image}-${index}`}
-                            className="relative overflow-hidden flex-shrink-0"
+                            className="relative overflow-hidden shrink-0"
                             style={{
-                                width: `calc(100vw - 5rem)`,
+                                width: `calc(100vw - 6rem)`,
                             }}
                         >
                             <div
@@ -108,7 +108,7 @@ export function HeroSection() {
                                 role="img"
                                 aria-label={`Slide ${(index % carouselImages.length) + 1}`}
                             />
-                            <div className="absolute inset-0 bg-gradient-to-r from-background via-background/60 to-transparent" />
+                            <div className="absolute inset-0 bg-linear-to-r from-background via-background/60 to-transparent" />
                         </div>
                     ))}
                 </motion.div>
@@ -152,14 +152,14 @@ export function HeroSection() {
                 </div>
 
                 {/* Contenido de texto - overlay sobre el carrusel */}
-                <div className="absolute inset-0 pointer-events-none bg-linear-to-t from-background/90 via-transparent to-transparent">
+                <div className="absolute inset-0 pointer-events-none">
                     <div className="container mx-auto h-full px-4 md:px-6 relative z-10 flex flex-col justify-center items-start pointer-events-auto">
-                        <div className="max-w-4xl">
+                        <div className="max-w-3xl">
                             <motion.h1
                                 initial={{ opacity: 0, y: 30 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.8, ease: "easeOut" }}
-                                className="text-5xl md:text-8xl font-extrabold tracking-tighter text-foreground mb-8 uppercase leading-[0.9]"
+                                className="text-5xl md:text-7xl font-extrabold tracking-tighter text-foreground mb-8 uppercase leading-[0.9]"
                             >
                                 Ejecución profesional de{" "}
                                 <span className="text-primary">soluciones a medida</span> para

@@ -11,6 +11,7 @@ const fancyButtonVariants = cva(
                 primary: "border-primary text-primary hover:bg-primary hover:text-white",
                 dark: "border-black text-black hover:bg-black hover:text-white",
                 light: "border-white text-white hover:bg-white hover:text-black",
+                secondary: "border-primary text-white bg-primary hover:bg-transparent hover:text-primary",
             },
             size: {
                 default: "px-6 py-3 text-[11px]",
