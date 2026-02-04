@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import Image from "next/image";
 import { Target, Users, Award, TrendingUp, CheckCircle2 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 
@@ -76,14 +77,18 @@ export default function AboutPage() {
                     {/* Image Side - Takes left portion */}
                     <div className="relative h-[500px] md:h-[600px] w-full">
                         <div className="absolute inset-0 bg-linear-to-br from-primary/20 via-secondary/20 to-accent/20">
-                            {/* Placeholder - Replace with actual image */}
-                            <div className="w-full h-full flex items-center justify-center">
-                                <Users className="w-32 h-32 text-primary/30" />
-                            </div>
+                            <Image
+                                src="/images/about/about-us.jpg"
+                                alt="Equipo de aradiz trabajando en proyecto"
+                                fill
+                                className="object-cover"
+                                priority
+                            />
+                            <div className="absolute inset-0 bg-black/40" />
                         </div>
 
                         {/* Content Panel - Overlays on right side */}
-                        <div className="absolute top-0 right-0 w-full md:w-[65%] lg:w-[60%] h-full bg-[#1a1a1a] text-white p-8 md:p-12 lg:p-16 flex flex-col justify-center md:translate-x-0">
+                        <div className="absolute top-0 right-0 w-full md:w-[65%] lg:w-[60%] h-full bg-foreground text-background p-8 md:p-12 lg:p-16 flex flex-col justify-center md:translate-x-0">
                             <div className="max-w-2xl">
                                 <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight">
                                     Nuestra forma de <span className="bg-primary text-white px-2 py-1">trabajo</span>

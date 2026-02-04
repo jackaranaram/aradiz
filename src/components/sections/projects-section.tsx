@@ -47,7 +47,7 @@ const projects = [
 
 export function ProjectsSection() {
     return (
-        <section className="py-20 md:py-28">
+        <section className="py-28">
             <div className="container mx-auto px-4 md:px-6">
                 {/* Section Header */}
                 <motion.div

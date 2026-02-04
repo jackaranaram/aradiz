@@ -68,15 +68,14 @@ export function HeroSection() {
 
 
     return (
-        <section className="relative min-h-screen flex items-end justify-start overflow-hidden">
-
-            {/* Carousel Container */}
+        <section className="relative min-h-screen flex items-end justify-start overflow-hidden [--slide-width:100vw] xl:[--slide-width:calc(100vw-6rem)] shadow-2xl">
+            {/* Carousel - solo los slides */}
             <div className="h-screen relative z-10 overflow-hidden">
                 {/* Track del carrusel - Contiene TODAS las imágenes duplicadas */}
                 <motion.div
                     className="flex h-full"
                     animate={{
-                        x: `calc(${offset - carouselImages.length} * (100vw - 6rem))`,
+                        x: `calc(${offset - carouselImages.length} * var(--slide-width))`,
                     }}
                     transition={
                         isTransitioning
@@ -97,7 +96,7 @@ export function HeroSection() {
                             key={`${image}-${index}`}
                             className="relative overflow-hidden shrink-0"
                             style={{
-                                width: `calc(100vw - 6rem)`,
+                                width: `var(--slide-width)`,
                             }}
                         >
                             <div
@@ -112,75 +111,72 @@ export function HeroSection() {
                         </div>
                     ))}
                 </motion.div>
+            </div>
 
-                {/* Controles de navegación - sobre el carrusel */}
-                <div className="absolute bottom-8 right-28 flex gap-2 z-20 text-background">
-                    <button
-                        onClick={prevSlide}
-                        className="p-3 rounded-full bg-foreground backdrop-blur-sm hover:bg-foreground transition-colors"
-                        aria-label="Imagen anterior"
-                    >
-                        <ChevronLeft className="h-5 w-5" />
-                    </button>
-                    <button
-                        onClick={nextSlide}
-                        className="p-3 rounded-full bg-foreground backdrop-blur-sm hover:bg-foreground transition-colors"
-                        aria-label="Siguiente imagen"
-                    >
-                        <ChevronRight className="h-5 w-5" />
-                    </button>
-                </div>
+            {/* Contenido overlay - separado del carrusel, siempre 100vw */}
+            <div className="absolute inset-0 z-20 pointer-events-none">
+                <div className="container mx-auto h-full px-4 md:px-6 relative flex flex-col justify-center items-start">
+                    {/* Contenido de texto */}
+                    <div className="max-w-3xl pointer-events-auto">
+                        <motion.h1
+                            initial={{ opacity: 0, y: 30 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.8, ease: "easeOut" }}
+                            className="text-5xl md:text-7xl font-extrabold tracking-tighter text-foreground mb-8 uppercase leading-[0.9]"
+                        >
+                            Ejecución profesional de{" "}
+                            <span className="text-primary">soluciones a medida</span> para
+                            proyectos de interior y obra
+                        </motion.h1>
 
-                {/* Indicadores de slides */}
-                <div className="absolute bottom-10 left-32 flex gap-2 z-20 cursor-pointer">
-                    {carouselImages.map((image, index) => {
-                        // Calcular qué imagen está actualmente visible
-                        const currentActiveIndex = Math.abs((carouselImages.length - offset) % carouselImages.length);
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6, delay: 0.4 }}
+                        >
+                            <FancyButton asChild variant="dark" showKeys={false}>
+                                <Link href="/proyectos">Ver Proyectos</Link>
+                            </FancyButton>
+                        </motion.div>
+                    </div>
 
-                        return (
-                            <button
-                                key={index}
-                                onClick={() => goToSlide(index)}
-                                className={`h-2 rounded-full transition-all duration-300 ${index === currentActiveIndex
-                                    ? "w-8 bg-primary"
-                                    : "w-2 bg-foreground/30 hover:bg-foreground/50"
-                                    }`}
-                                aria-label={`Ir a imagen ${index + 1}`}
-                            />
-                        );
-                    })}
-                </div>
+                    {/* Indicadores de slides */}
+                    <div className="absolute bottom-10 left-0 flex gap-2 cursor-pointer pointer-events-auto px-4 md:px-6">
+                        {carouselImages.map((image, index) => {
+                            const currentActiveIndex = Math.abs((carouselImages.length - offset) % carouselImages.length);
+                            return (
+                                <button
+                                    key={index}
+                                    onClick={() => goToSlide(index)}
+                                    className={`h-2 rounded-full transition-all duration-300 ${index === currentActiveIndex
+                                        ? "w-8 bg-primary"
+                                        : "w-2 bg-foreground/30 hover:bg-foreground/50"
+                                        }`}
+                                    aria-label={`Ir a imagen ${index + 1}`}
+                                />
+                            );
+                        })}
+                    </div>
 
-                {/* Contenido de texto - overlay sobre el carrusel */}
-                <div className="absolute inset-0 pointer-events-none">
-                    <div className="container mx-auto h-full px-4 md:px-6 relative z-10 flex flex-col justify-center items-start pointer-events-auto">
-                        <div className="max-w-3xl">
-                            <motion.h1
-                                initial={{ opacity: 0, y: 30 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.8, ease: "easeOut" }}
-                                className="text-5xl md:text-7xl font-extrabold tracking-tighter text-foreground mb-8 uppercase leading-[0.9]"
-                            >
-                                Ejecución profesional de{" "}
-                                <span className="text-primary">soluciones a medida</span> para
-                                proyectos de interior y obra
-                            </motion.h1>
-
-                            <motion.div
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.6, delay: 0.4 }}
-                                className="flex flex-col sm:flex-row gap-8 justify-start items-center"
-                            >
-                                <FancyButton asChild variant="dark" showKeys={false}>
-                                    <Link href="/proyectos">Ver Proyectos</Link>
-                                </FancyButton>
-                            </motion.div>
-                        </div>
+                    {/* Controles de navegación */}
+                    <div className="absolute bottom-6 right-0 flex text-background pointer-events-auto px-4 md:px-6">
+                        <button
+                            onClick={prevSlide}
+                            className="p-3 rounded-full bg-foreground backdrop-blur-sm hover:bg-foreground transition-colors"
+                            aria-label="Imagen anterior"
+                        >
+                            <ChevronLeft className="h-5 w-5" />
+                        </button>
+                        <button
+                            onClick={nextSlide}
+                            className="p-3 rounded-full bg-foreground backdrop-blur-sm hover:bg-foreground transition-colors"
+                            aria-label="Siguiente imagen"
+                        >
+                            <ChevronRight className="h-5 w-5" />
+                        </button>
                     </div>
                 </div>
             </div>
-
-        </section >
+        </section>
     );
 }

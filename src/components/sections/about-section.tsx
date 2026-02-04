@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { CheckCircle, Award, Clock, Users } from "lucide-react";
 
 const features = [
@@ -35,13 +36,17 @@ export function AboutSection() {
         <section className="w-full">
             <div className="relative w-full">
                 {/* Image Side - Takes full width */}
-                <div className="relative h-[500px] md:h-[550px] w-full">
-                    <div className="absolute inset-0 bg-linear-to-br from-primary/10 via-secondary/10 to-accent/20">
-                        {/* Placeholder - Replace with actual image */}
-                        <div className="w-full h-full flex items-center justify-center">
-                            <Users className="w-32 h-32 text-primary/30" />
-                        </div>
-                    </div>
+                <div className="absolute inset-0 bg-linear-to-br from-primary/10 via-secondary/10 to-accent/20">
+                    <Image
+                        src="/images/about/about-us.jpeg"
+                        alt="Sobre aradiz"
+                        fill
+                        className="object-cover"
+                    />
+                    <div className="absolute inset-0 bg-foreground/80" />
+                </div>
+                <div className="container mx-auto">
+
 
                     {/* Content Panel - Overlays on right side */}
                     <motion.div
@@ -49,7 +54,7 @@ export function AboutSection() {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
-                        className="absolute top-0 right-0 w-full md:w-[65%] lg:w-[60%] h-full bg-linear-to-b from-background via-background to-white text-white p-8 md:p-12 lg:p-16 flex flex-col justify-center"
+                        className="relative md:w-[65%] lg:w-[60%] ml-auto top-12 h-full bg-linear-to-b from-background via-background to-white text-white p-8 md:p-12 lg:p-16 flex flex-col justify-center shadow-2xl"
                     >
                         <div className="max-w-3xl">
                             <span className="text-sm font-semibold uppercase tracking-wider text-primary mb-3 block">

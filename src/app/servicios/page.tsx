@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { Blinds, Armchair, PanelTop, Wrench, CheckCircle } from "lucide-react";
 import { FancyButton } from "@/components/shared/buttons/fancy-button";
 import { CTASection } from "@/components/sections/cta-section";
@@ -11,25 +12,11 @@ export const metadata: Metadata = {
 
 const services = [
     {
-        id: "cortinas-tecnicas",
-        icon: Blinds,
-        title: "Cortinas Técnicas",
-        description: "Soluciones funcionales para control de luz y privacidad",
-        fullDescription: "Fabricación e instalación de sistemas de cortinas técnicas para espacios corporativos y comerciales. Ofrecemos cortinas roller, panel screen, persianas verticales y horizontales con acabados profesionales y materiales de alta durabilidad.",
-        features: [
-            "Cortinas roller blackout y sunscreen",
-            "Sistemas motorizados y automatizados",
-            "Panel screen para grandes ventanales",
-            "Persianas de aluminio y PVC",
-            "Instalación técnica profesional",
-            "Garantía y mantenimiento",
-        ],
-    },
-    {
         id: "mobiliario-medida",
         icon: Armchair,
         title: "Mobiliario a Medida",
         description: "Fabricación de mobiliario diseñado para cada proyecto",
+        image: "/images/services/muebleria_medida.png",
         fullDescription: "Diseño y fabricación de mobiliario corporativo en melamina de alta calidad. Creamos soluciones a medida para oficinas, recepción, áreas comunes y espacios comerciales con acabados profesionales y funcionalidad óptima.",
         features: [
             "Mobiliario de oficina y recepción",
@@ -41,10 +28,27 @@ const services = [
         ],
     },
     {
+        id: "cortinas-tecnicas",
+        icon: Blinds,
+        title: "Cortinas Técnicas",
+        description: "Soluciones funcionales para control de luz y privacidad",
+        image: "/images/services/cortinas_tecnicas.png",
+        fullDescription: "Fabricación e instalación de sistemas de cortinas técnicas para espacios corporativos y comerciales. Ofrecemos cortinas roller, panel screen, persianas verticales y horizontales con acabados profesionales y materiales de alta durabilidad.",
+        features: [
+            "Cortinas roller blackout y sunscreen",
+            "Sistemas motorizados y automatizados",
+            "Panel screen para grandes ventanales",
+            "Persianas de aluminio y PVC",
+            "Instalación técnica profesional",
+            "Garantía y mantenimiento",
+        ],
+    },
+    {
         id: "sistemas-vidrio",
         icon: PanelTop,
         title: "Sistemas de Vidrio",
         description: "Instalación de sistemas de vidrio para obras",
+        image: "/images/services/sistemas_vidrio.png",
         fullDescription: "Instalación profesional de sistemas de vidrio templado y laminado para divisiones, mamparas, puertas y acabados arquitectónicos. Trabajamos con especificaciones técnicas precisas para proyectos de construcción y remodelación.",
         features: [
             "Mamparas y divisiones de oficina",
@@ -60,6 +64,7 @@ const services = [
         icon: Wrench,
         title: "Instalación Profesional",
         description: "Ejecución técnica con precisión y cumplimiento",
+        image: "/images/services/instalacion_profesional.png",
         fullDescription: "Servicio de instalación profesional para todos nuestros productos. Contamos con personal técnico capacitado que garantiza la correcta ejecución de cada proyecto, cumpliendo con plazos y especificaciones técnicas.",
         features: [
             "Personal técnico especializado",
@@ -77,7 +82,7 @@ export default function ServicesPage() {
     return (
         <>
             {/* Hero Section */}
-            <section className="relative py-16 bg-background mt-28">
+            <section className="relative py-16 bg-background mt-25">
                 {/* Background Pattern */}
                 <div className="absolute inset-0 opacity-[0.03]">
                     <div
@@ -90,11 +95,8 @@ export default function ServicesPage() {
 
                 <div className="container mx-auto px-4 md:px-6">
                     <div className="max-w-3xl">
-                        <span className="inline-block px-4 py-1.5 mb-6 text-sm font-medium text-primary bg-primary/10 rounded-full">
-                            Nuestros Servicios
-                        </span>
                         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground mb-6 uppercase">
-                            Soluciones profesionales para proyectos de{" "}
+                            Servicios profesionales para proyectos de{" "}
                             <span className="text-primary">interior y obra</span>
                         </h1>
                         <p className="text-lg md:text-xl text-muted-foreground mb-8">
@@ -114,42 +116,57 @@ export default function ServicesPage() {
                     <section
                         key={service.id}
                         id={service.id}
-                        className={`py-16 md:py-24 ${isEven ? "bg-background" : "bg-card"}`}
+                        className={` ${isEven ? "bg-background" : "bg-card"}`}
                     >
-                        <div className="container mx-auto px-4 md:px-6">
-                            <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-                                {/* Content */}
-                                <div className={isEven ? "lg:order-1" : "lg:order-2"}>
-                                    <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-6">
-                                        <Icon className="w-8 h-8 text-primary" />
+                        <div className="w-full mx-auto px-0">
+                            <div className="grid lg:grid-cols-5 min-h-[600px]">
+                                {/* Image Section - 40% */}
+                                <div className={`lg:col-span-2 relative ${isEven ? "lg:order-1" : "lg:order-2"}`}>
+                                    <div className="relative h-full min-h-[400px] lg:min-h-full">
+                                        <Image
+                                            src={service.image}
+                                            alt={service.title}
+                                            fill
+                                            className="object-cover"
+                                            sizes="(max-width: 768px) 100vw, 40vw"
+                                        />
                                     </div>
-                                    <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-                                        {service.title}
-                                    </h2>
-                                    <p className="text-lg text-muted-foreground mb-6">
-                                        {service.fullDescription}
-                                    </p>
-
-                                    <div className="space-y-3 mb-8">
-                                        {service.features.map((feature) => (
-                                            <div key={feature} className="flex items-start gap-3">
-                                                <CheckCircle className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                                                <p className="text-foreground">{feature}</p>
-                                            </div>
-                                        ))}
-                                    </div>
-
-                                    <FancyButton asChild variant={isEven ? "dark" : "primary"}>
-                                        <Link href="/contacto">Consultar sobre este servicio</Link>
-                                    </FancyButton>
                                 </div>
 
-                                {/* Image Placeholder */}
-                                <div className={isEven ? "lg:order-2" : "lg:order-1"}>
-                                    <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-linear-to-br from-primary/10 via-secondary/10 to-accent/10">
-                                        {/* Placeholder - se reemplazará con imágenes reales */}
-                                        <div className="absolute inset-0 flex items-center justify-center">
-                                            <Icon className="w-24 h-24 text-primary/20" />
+                                {/* Content Panel - 60% */}
+                                <div className={`lg:col-span-3 ${isEven ? "bg-foreground" : "bg-background"} ${isEven ? "text-background" : "text-foreground"} ${isEven ? "lg:order-2" : "lg:order-1"}`}>
+                                    <div className="h-full flex flex-col justify-between p-8 md:p-12 lg:p-16">
+                                        {/* Top Content */}
+                                        <div>
+                                            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight">
+                                                {service.title.split(' ').map((word, idx, arr) => (
+                                                    idx === arr.length - 1 ? (
+                                                        <span key={idx} className="text-background bg-primary inline-block p-2">{word}</span>
+                                                    ) : (
+                                                        <span key={idx}>{word} </span>
+                                                    )
+                                                ))}
+                                            </h2>
+                                            <p className={`text-base md:text-lg ${isEven ? "text-muted-background" : "text-muted-foreground"} max-w-2xl leading-relaxed`}>
+                                                {service.fullDescription}
+                                            </p>
+                                        </div>
+
+                                        {/* Bottom Icons flex wrap */}
+                                        <div className="flex flex-wrap gap-6">
+                                            {service.features.map((feature, idx) => (
+                                                <div key={feature} className="group flex items-center gap-3">
+                                                    <CheckCircle className={`w-6 h-6 ${isEven ? "text-accent" : "text-primary"} group-hover:text-primary transition-colors`} />
+                                                    <span className={`text-xs text-center ${isEven ? "text-muted-background" : "text-muted-foreground"} line-clamp-2`}>{feature}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+
+                                        {/* CTA Button */}
+                                        <div className="mt-8">
+                                            <FancyButton asChild variant={isEven ? "light" : "primary"} showKeys={false}>
+                                                <Link href="/contacto">Consultar sobre este servicio</Link>
+                                            </FancyButton>
                                         </div>
                                     </div>
                                 </div>

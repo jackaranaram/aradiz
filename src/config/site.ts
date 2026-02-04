@@ -25,9 +25,9 @@ export const siteConfig = {
 
   // Contacto
   contact: {
-    phone: "+51 XXX XXX XXX", // Reemplazar con número real
+    phone: "+51 981 394 484", // Reemplazar con número real
     email: "contacto@aradiz.com",
-    whatsapp: "+51XXXXXXXXX", // Número de WhatsApp sin espacios
+    whatsapp: "+51933524449", // Número de WhatsApp sin espacios
     whatsappMessage: "Hola, me interesa solicitar una cotización para un proyecto.",
     address: "Lima, Perú", // Reemplazar con dirección real
   },
