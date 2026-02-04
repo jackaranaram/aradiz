@@ -68,10 +68,10 @@ export function HeroSection() {
 
 
     return (
-        <section className="relative min-h-screen flex items-end justify-start overflow-hidden bg-white">
+        <section className="relative min-h-screen flex items-end justify-start overflow-hidden bg-foreground">
 
             {/* Carousel Container */}
-            <div className="w-full h-[90vh] relative z-10 overflow-hidden">
+            <div className="w-full h-[100vh] relative z-10 overflow-hidden">
                 {/* Track del carrusel - Contiene TODAS las imágenes duplicadas */}
                 <motion.div
                     className="flex h-full gap-4"
@@ -95,7 +95,7 @@ export function HeroSection() {
                     {infiniteImages.map((image, index) => (
                         <div
                             key={`${image}-${index}`}
-                            className="relative overflow-hidden border border-border flex-shrink-0"
+                            className="relative overflow-hidden flex-shrink-0"
                             style={{
                                 width: `calc(100vw - 5rem)`,
                             }}
@@ -114,25 +114,25 @@ export function HeroSection() {
                 </motion.div>
 
                 {/* Controles de navegación - sobre el carrusel */}
-                <div className="absolute bottom-8 right-28 flex gap-2 z-20">
+                <div className="absolute bottom-8 right-28 flex gap-2 z-20 text-background">
                     <button
                         onClick={prevSlide}
-                        className="p-3 rounded-full bg-background/80 backdrop-blur-sm border border-border hover:bg-background transition-colors"
+                        className="p-3 rounded-full bg-foreground backdrop-blur-sm hover:bg-foreground transition-colors"
                         aria-label="Imagen anterior"
                     >
-                        <ChevronLeft className="h-5 w-5 text-foreground" />
+                        <ChevronLeft className="h-5 w-5" />
                     </button>
                     <button
                         onClick={nextSlide}
-                        className="p-3 rounded-full bg-background/80 backdrop-blur-sm border border-border hover:bg-background transition-colors"
+                        className="p-3 rounded-full bg-foreground backdrop-blur-sm hover:bg-foreground transition-colors"
                         aria-label="Siguiente imagen"
                     >
-                        <ChevronRight className="h-5 w-5 text-foreground" />
+                        <ChevronRight className="h-5 w-5" />
                     </button>
                 </div>
 
                 {/* Indicadores de slides */}
-                <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+                <div className="absolute bottom-10 left-32 flex gap-2 z-20 cursor-pointer">
                     {carouselImages.map((image, index) => {
                         // Calcular qué imagen está actualmente visible
                         const currentActiveIndex = Math.abs((carouselImages.length - offset) % carouselImages.length);
@@ -152,56 +152,31 @@ export function HeroSection() {
                 </div>
 
                 {/* Contenido de texto - overlay sobre el carrusel */}
-                <div className="absolute inset-0 pointer-events-none">
-                    <div className="max-w-4xl h-full ml-20 text-start relative z-10 flex flex-col justify-center items-start pointer-events-auto">
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.6 }}
-                        >
-                            <span className="inline-block px-4 py-1.5 mb-6 text-sm font-medium text-primary bg-primary/10 rounded-full">
-                                {siteConfig.tagline}
-                            </span>
-                        </motion.div>
+                <div className="absolute inset-0 pointer-events-none bg-linear-to-t from-background/90 via-transparent to-transparent">
+                    <div className="container mx-auto h-full px-4 md:px-6 relative z-10 flex flex-col justify-center items-start pointer-events-auto">
+                        <div className="max-w-4xl">
+                            <motion.h1
+                                initial={{ opacity: 0, y: 30 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.8, ease: "easeOut" }}
+                                className="text-5xl md:text-8xl font-extrabold tracking-tighter text-foreground mb-8 uppercase leading-[0.9]"
+                            >
+                                Ejecución profesional de{" "}
+                                <span className="text-primary">soluciones a medida</span> para
+                                proyectos de interior y obra
+                            </motion.h1>
 
-                        <motion.h1
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.6, delay: 0.1 }}
-                            className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground mb-6"
-                        >
-                            Ejecución profesional de{" "}
-                            <span className="text-primary">soluciones a medida</span> para
-                            proyectos de interior y obra
-                        </motion.h1>
-
-                        <motion.p
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.6, delay: 0.2 }}
-                            className="text-lg md:text-xl text-foreground mb-10 max-w-lg"
-                        >
-                            Desde fabricación hasta instalación, con foco en cumplimiento
-                            técnico y eficiencia. Trabajamos con empresas, estudios de
-                            arquitectura, constructoras y desarrolladores inmobiliarios.
-                        </motion.p>
-
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.6, delay: 0.3 }}
-                            className="flex flex-col sm:flex-row gap-8 justify-start items-center"
-                        >
-                            <FancyButton asChild variant="primary" showKeys={false}>
-                                <Link href="/contacto">
-                                    Solicitar Cotización
-                                    <ArrowRight className="ml-2 h-5 w-5" />
-                                </Link>
-                            </FancyButton>
-                            <FancyButton asChild variant="dark" showKeys={false}>
-                                <Link href="/proyectos">Ver Proyectos</Link>
-                            </FancyButton>
-                        </motion.div>
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.6, delay: 0.4 }}
+                                className="flex flex-col sm:flex-row gap-8 justify-start items-center"
+                            >
+                                <FancyButton asChild variant="dark" showKeys={false}>
+                                    <Link href="/proyectos">Ver Proyectos</Link>
+                                </FancyButton>
+                            </motion.div>
+                        </div>
                     </div>
                 </div>
             </div>

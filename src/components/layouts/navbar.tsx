@@ -12,11 +12,11 @@ export function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <header className="fixed top-0 z-50 w-full bg-transparent backdrop-blur-sm supports-backdrop-filter:bg-transparent">
+        <header className="fixed top-0 z-50 w-full bg-transparent supports-backdrop-filter:bg-transparent">
             <nav className="container mx-auto flex h-20 items-center justify-between px-4 md:px-6">
                 {/* Logo */}
                 <Link href="/" className="flex flex-col leading-none">
-                    <span className="text-2xl font-bold tracking-tighter text-primary">
+                    <span className="text-2xl font-bold tracking-tighter text-primary uppercase">
                         aradiz
                     </span>
                     <span className="text-[10px] font-medium tracking-[0.2em] text-foreground/80 uppercase">
@@ -30,7 +30,7 @@ export function Navbar() {
                         <Link
                             key={item.href}
                             href={item.href}
-                            className="text-xs font-medium text-foreground transition-colors hover:text-primary uppercase"
+                            className="text-xs font-medium text-black transition-colors hover:text-primary uppercase"
                         >
                             {item.name}
                         </Link>
