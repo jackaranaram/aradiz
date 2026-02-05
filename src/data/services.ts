@@ -1,9 +1,7 @@
-import { Armchair, Blinds, PanelTop, Wrench } from "lucide-react";
-
 export const services = [
     {
         id: "mobiliario-medida",
-        icon: Armchair,
+        icon: "Armchair",
         title: "Mobiliario a Medida",
         description: "Fabricación de mobiliario diseñado para cada proyecto",
         image: "/images/services/muebleria_medida.png",
@@ -19,7 +17,7 @@ export const services = [
     },
     {
         id: "cortinas-tecnicas",
-        icon: Blinds,
+        icon: "Blinds",
         title: "Cortinas Técnicas",
         description: "Soluciones funcionales para control de luz y privacidad",
         image: "/images/services/cortinas_tecnicas.png",
@@ -35,7 +33,7 @@ export const services = [
     },
     {
         id: "sistemas-vidrio",
-        icon: PanelTop,
+        icon: "PanelTop",
         title: "Sistemas de Vidrio",
         description: "Instalación de sistemas de vidrio para obras",
         image: "/images/services/sistemas_vidrio.png",
@@ -51,7 +49,7 @@ export const services = [
     },
     {
         id: "instalacion-profesional",
-        icon: Wrench,
+        icon: "Wrench",
         title: "Instalación Profesional",
         description: "Ejecución técnica con precisión y cumplimiento",
         image: "/images/services/instalacion_profesional.png",

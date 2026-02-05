@@ -1,8 +1,12 @@
-"use client";
-
+import { Metadata } from "next";
 import Image from "next/image";
 import { PageHeroSection, ValuesSection, FeatureListSection, CTASection } from "@/components/sections";
 import { values, differentiators } from "@/data/values";
+
+export const metadata: Metadata = {
+    title: "Nosotros",
+    description: "Empresa especializada en fabricación, ejecución e instalación de soluciones a medida para proyectos de interior y obra. Enfoque en cumplimiento técnico y eficiencia.",
+};
 
 export default function AboutPage() {
     return (
@@ -11,7 +15,6 @@ export default function AboutPage() {
                 title="Sobre nosotros"
                 highlightedText="nosotros"
                 description="Empresa especializada en la fabricación, ejecución e instalación de soluciones a medida para proyectos de interior y obra. Nos enfocamos en el cumplimiento técnico y la eficiencia, trabajando con empresas, estudios de arquitectura, constructoras y desarrolladores inmobiliarios."
-                className="mt-18"
             />
 
             {/* Mission Section */}

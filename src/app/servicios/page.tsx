@@ -68,14 +68,14 @@ export default function ServicesPage() {
                                         <div className="flex flex-wrap gap-6">
                                             {service.features.map((feature) => (
                                                 <div key={feature} className="group flex items-center gap-3">
-                                                    <CheckCircle className={`w-6 h-6 ${isEven ? "text-accent" : "text-primary"} group-hover:text-primary transition-colors`} />
-                                                    <span className={`text-xs text-center ${isEven ? "text-muted-background" : "text-muted-foreground"} line-clamp-2`}>{feature}</span>
+                                                    <CheckCircle className={`w-6 h-6 ${isEven ? "text-accent" : "text-primary"}`} />
+                                                    <span className={`text-sm text-center ${isEven ? "text-muted-background" : "text-muted-foreground"} line-clamp-2`}>{feature}</span>
                                                 </div>
                                             ))}
                                         </div>
 
                                         {/* CTA Button */}
-                                        <div className="mt-8">
+                                        <div>
                                             <FancyButton asChild variant={isEven ? "light" : "primary"} showKeys={false}>
                                                 <Link href="/contacto">Consultar sobre este servicio</Link>
                                             </FancyButton>

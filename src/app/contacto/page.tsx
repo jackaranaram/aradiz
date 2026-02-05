@@ -1,11 +1,14 @@
-"use client";
-
 import { Metadata } from "next";
 import { Mail, Phone, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { siteConfig } from "@/config/site";
 import { PageHeroSection, ContactFormSection } from "@/components/sections";
+
+export const metadata: Metadata = {
+    title: "Contacto",
+    description: "Contáctanos para conversar sobre tu proyecto. Ofrecemos soluciones profesionales en cortinas técnicas, mobiliario a medida y sistemas de vidrio.",
+};
 
 export default function ContactPage() {
     const contactInfo = [
@@ -39,11 +42,10 @@ export default function ContactPage() {
                 title="Conversemos sobre tu proyecto"
                 highlightedText="proyecto"
                 description="Estamos listos para ayudarte. Completa el formulario y nos pondremos en contacto contigo a la brevedad."
-                className="mt-28"
             />
 
             {/* Contact Section */}
-            <section className="py-16 md:py-24">
+            <section className="py-16">
                 <div className="container mx-auto px-4 md:px-6">
                     <div className="grid lg:grid-cols-5 gap-12 lg:gap-16">
                         {/* Contact Info */}
@@ -105,7 +107,7 @@ export default function ContactPage() {
                         </div>
 
                         {/* Contact Form */}
-                        <ContactFormSection className="lg:col-span-3" />
+                        <ContactFormSection className="lg:col-span-3 -translate-y-16" />
                     </div>
                 </div>
             </section>

@@ -2,7 +2,6 @@ import { Metadata } from "next";
 import Image from "next/image";
 
 import { PageHeroSection, CTASection } from "@/components/sections";
-import { FancyButton } from "@/components/shared/buttons/fancy-button";
 import { cn } from "@/lib/utils";
 import { allProjects } from "@/data/projects";
 
@@ -22,7 +21,7 @@ export default function ProjectsPage() {
             />
 
             {/* Projects Grid - Bento Style */}
-            <section className="py-16 md:py-24">
+            <section>
                 <div className="w-full mx-auto">
                     <div className="grid grid-cols-1 md:grid-cols-4 auto-rows-[300px]">
                         {allProjects.map((project, index) => {

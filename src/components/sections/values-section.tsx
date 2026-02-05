@@ -1,11 +1,19 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { LucideIcon } from "lucide-react";
+import { Target, Users, Award, TrendingUp, LucideIcon } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 
+// Map of icon names to components for resolving string references
+const iconMap: Record<string, LucideIcon> = {
+    Target,
+    Users,
+    Award,
+    TrendingUp,
+};
+
 export interface Value {
-    icon: LucideIcon;
+    icon: string; // Now a string that maps to an icon
     title: string;
     description: string;
 }
@@ -43,7 +51,7 @@ export function ValuesSection({
 
                 <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                     {values.map((value, index) => {
-                        const Icon = value.icon;
+                        const Icon = iconMap[value.icon] || Target; // Fallback to Target
                         return (
                             <motion.div
                                 key={value.title}

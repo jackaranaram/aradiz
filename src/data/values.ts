@@ -1,26 +1,24 @@
-import { Target, Users, Award, TrendingUp } from "lucide-react";
-
 export const values = [
     {
-        icon: Target,
+        icon: "Target",
         title: "Cumplimiento Técnico",
         description:
             "Seguimos especificaciones técnicas precisas y estándares de calidad en cada proyecto.",
     },
     {
-        icon: Users,
+        icon: "Users",
         title: "Enfoque B2B",
         description:
             "Entendemos las necesidades de empresas, constructoras y estudios de arquitectura.",
     },
     {
-        icon: Award,
+        icon: "Award",
         title: "Calidad Garantizada",
         description:
             "Utilizamos materiales premium y procesos de fabricación controlados.",
     },
     {
-        icon: TrendingUp,
+        icon: "TrendingUp",
         title: "Eficiencia",
         description:
             "Optimizamos procesos para cumplir con los plazos de entrega y ejecución de obra.",

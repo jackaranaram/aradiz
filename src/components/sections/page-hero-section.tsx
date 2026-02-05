@@ -6,7 +6,6 @@ interface PageHeroSectionProps {
     title: string;
     highlightedText?: string;
     description: string;
-    badge?: string;
     className?: string;
 }
 
@@ -14,8 +13,7 @@ export function PageHeroSection({
     title,
     highlightedText,
     description,
-    badge,
-    className = "mt-28",
+    className = "mt-15",
 }: PageHeroSectionProps) {
     // Split title to insert highlighted text if provided
     const renderTitle = () => {
@@ -35,7 +33,7 @@ export function PageHeroSection({
     };
 
     return (
-        <section className={`relative py-16 bg-background ${className}`}>
+        <section className={`relative py-20 bg-background ${className}`}>
             {/* Background Pattern */}
             <div className="absolute inset-0 opacity-[0.03]">
                 <div
