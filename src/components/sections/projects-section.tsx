@@ -47,7 +47,7 @@ const projects = [
 
 export function ProjectsSection() {
     return (
-        <section className="py-20 md:py-28">
+        <section className="py-28">
             <div className="container mx-auto px-4 md:px-6">
                 {/* Section Header */}
                 <motion.div
@@ -65,7 +65,7 @@ export function ProjectsSection() {
                             Proyectos destacados
                         </h2>
                     </div>
-                    <Button asChild variant="outline">
+                    <Button asChild variant="light">
                         <Link href="/proyectos">
                             Ver todos los proyectos
                             <ArrowRight className="ml-2 h-4 w-4" />
@@ -112,8 +112,6 @@ export function ProjectsSection() {
                                 </h3>
                             </div>
 
-                            {/* Hover border effect */}
-                            <div className="absolute inset-0 border-2 border-transparent group-hover:border-primary/50 rounded-xl transition-colors duration-300" />
                         </motion.div>
                     ))}
                 </motion.div>

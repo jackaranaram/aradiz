@@ -2,13 +2,14 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Blinds, Armchair, PanelTop, Wrench, ArrowRight } from "lucide-react";
+import { ArrowRight, Armchair, Blinds, PanelTop, Wrench, LucideIcon } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
-import { siteConfig } from "@/config/site";
+import { services } from "@/data/services";
 
-const iconMap = {
-    Blinds,
+// Map of icon names to components for resolving string references
+const iconMap: Record<string, LucideIcon> = {
     Armchair,
+    Blinds,
     PanelTop,
     Wrench,
 };
@@ -65,8 +66,8 @@ export function ServicesSection() {
                     viewport={{ once: true }}
                     className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
                 >
-                    {siteConfig.services.map((service) => {
-                        const Icon = iconMap[service.icon as keyof typeof iconMap];
+                    {services.map((service) => {
+                        const Icon = iconMap[service.icon] || Armchair; // Fallback
                         return (
                             <motion.div key={service.id} variants={itemVariants}>
                                 <Link href={`/servicios#${service.id}`}>

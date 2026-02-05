@@ -11,9 +11,9 @@ export const theme = {
             dark: "#0A5256",
         },
         secondary: {
-            DEFAULT: "#4F6F3E",
-            light: "#6B8F52",
-            dark: "#3A522E",
+            DEFAULT: "#2F4F4F",
+            light: "#4A6B6B",
+            dark: "#1A2E2E",
         },
         accent: {
             DEFAULT: "#4FB6B1",

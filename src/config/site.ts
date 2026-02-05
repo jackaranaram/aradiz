@@ -25,9 +25,9 @@ export const siteConfig = {
 
   // Contacto
   contact: {
-    phone: "+51 XXX XXX XXX", // Reemplazar con número real
+    phone: "+51 981 394 484", // Reemplazar con número real
     email: "contacto@aradiz.com",
-    whatsapp: "+51XXXXXXXXX", // Número de WhatsApp sin espacios
+    whatsapp: "+51933524449", // Número de WhatsApp sin espacios
     whatsappMessage: "Hola, me interesa solicitar una cotización para un proyecto.",
     address: "Lima, Perú", // Reemplazar con dirección real
   },
@@ -46,34 +46,6 @@ export const siteConfig = {
     { name: "Proyectos", href: "/proyectos" },
     { name: "Nosotros", href: "/nosotros" },
     { name: "Contacto", href: "/contacto" },
-  ],
-
-  // Servicios
-  services: [
-    {
-      id: "cortinas-tecnicas",
-      title: "Cortinas Técnicas",
-      description: "Soluciones funcionales para control de luz y privacidad en espacios corporativos y comerciales.",
-      icon: "Blinds",
-    },
-    {
-      id: "mobiliario-medida",
-      title: "Mobiliario a Medida",
-      description: "Fabricación de mobiliario en melamina diseñado específicamente para las necesidades de cada proyecto.",
-      icon: "Armchair",
-    },
-    {
-      id: "sistemas-vidrio",
-      title: "Sistemas de Vidrio",
-      description: "Instalación de sistemas de vidrio para obras, divisiones y acabados arquitectónicos.",
-      icon: "PanelTop",
-    },
-    {
-      id: "instalacion-profesional",
-      title: "Instalación Profesional",
-      description: "Ejecución técnica con precisión y cumplimiento de plazos en todos los proyectos.",
-      icon: "Wrench",
-    },
   ],
 } as const;
 

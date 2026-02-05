@@ -1,20 +1,16 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { siteConfig } from "@/config/site";
 import { Navbar, Footer, WhatsAppButton } from "@/components/layouts";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const jakarta = Plus_Jakarta_Sans({
+  variable: "--font-jakarta",
   subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
+  // ... existing metadata code ...
   title: {
     default: `${siteConfig.name} | ${siteConfig.tagline}`,
     template: `%s | ${siteConfig.name}`,
@@ -50,7 +46,7 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
+        className={`${jakarta.variable} font-sans antialiased min-h-screen flex flex-col`}
       >
         <Navbar />
         <main className="flex-1">{children}</main>
