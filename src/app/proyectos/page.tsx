@@ -1,113 +1,25 @@
 import { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
+
+import { PageHeroSection, CTASection } from "@/components/sections";
+import { FancyButton } from "@/components/shared/buttons/fancy-button";
+import { cn } from "@/lib/utils";
+import { allProjects } from "@/data/projects";
 
 export const metadata: Metadata = {
     title: "Proyectos",
     description: "Portafolio de proyectos ejecutados: oficinas corporativas, hoteles, edificios residenciales y espacios comerciales.",
 };
 
-// Todos los proyectos (usaremos las mismas imágenes por ahora)
-const allProjects = [
-    {
-        id: 1,
-        title: "Oficinas Corporativas Torre Central",
-        category: "Mobiliario a medida",
-        location: "San Isidro, Lima",
-        year: "2024",
-        image: "/images/projects/project-1.jpg",
-        description: "Mobiliario corporativo completo con estaciones de trabajo modulares y áreas de recepción.",
-    },
-    {
-        id: 2,
-        title: "Hotel Boutique San Isidro",
-        category: "Cortinas técnicas",
-        location: "San Isidro, Lima",
-        year: "2024",
-        image: "/images/projects/project-2.jpg",
-        description: "Sistema completo de cortinas motorizadas para 80 habitaciones y áreas comunes.",
-    },
-    {
-        id: 3,
-        title: "Centro Empresarial Javier Prado",
-        category: "Sistemas de vidrio",
-        location: "San Isidro, Lima",
-        year: "2023",
-        image: "/images/projects/project-3.jpg",
-        description: "Mamparas de vidrio templado y divisiones para 12 pisos de oficinas corporativas.",
-    },
-    {
-        id: 4,
-        title: "Edificio Residencial Miraflores",
-        category: "Instalación profesional",
-        location: "Miraflores, Lima",
-        year: "2023",
-        image: "/images/projects/project-4.jpg",
-        description: "Mobiliario a medida y cortinas técnicas para 45 departamentos y áreas comunes.",
-    },
-    {
-        id: 5,
-        title: "Showroom Automotriz Premium",
-        category: "Mobiliario a medida",
-        location: "Surco, Lima",
-        year: "2024",
-        image: "/images/projects/project-5.jpg",
-        description: "Mobiliario de exhibición y recepción con acabados de lujo para marca automotriz.",
-    },
-    {
-        id: 6,
-        title: "Oficinas Tech Company",
-        category: "Mobiliario a medida",
-        location: "San Isidro, Lima",
-        year: "2023",
-        image: "/images/projects/project-1.jpg",
-        description: "Estaciones de trabajo colaborativas y salas de reunión para startup tecnológica.",
-    },
-    {
-        id: 7,
-        title: "Hotel Ejecutivo Lima",
-        category: "Cortinas técnicas",
-        location: "Miraflores, Lima",
-        year: "2023",
-        image: "/images/projects/project-2.jpg",
-        description: "Cortinas blackout y sunscreen para 120 habitaciones.",
-    },
-    {
-        id: 8,
-        title: "Oficinas Financieras",
-        category: "Sistemas de vidrio",
-        location: "San Isidro, Lima",
-        year: "2024",
-        image: "/images/projects/project-3.jpg",
-        description: "Divisiones de vidrio de alta seguridad para entidad bancaria.",
-    },
-];
-
-import { CTASection } from "@/components/sections/cta-section";
-import { FancyButton } from "@/components/shared/buttons/fancy-button";
-import { cn } from "@/lib/utils";
 
 export default function ProjectsPage() {
     return (
         <>
-            {/* Hero Section */}
-            <section className="relative py-16 bg-background mt-28">
-                <div className="container mx-auto px-4 md:px-6">
-                    <div className="max-w-3xl">
-
-                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground mb-6 uppercase">
-                            Proyectos destacados para el <span className="text-primary">sector corporativo e inmobiliario.</span>
-                        </h1>
-                        <p className="text-lg md:text-xl text-muted-foreground">
-                            Desde oficinas corporativas hasta espacios comerciales, cada proyecto refleja nuestro compromiso con la calidad, el diseño y la funcionalidad.
-                        </p>
-                        <span className="inline-block px-2 py-1.5 mb-2 text-sm font-medium text-primary-foreground bg-secondary/20 uppercase mt-6">
-                            Nuestros Proyectos
-                        </span>
-                    </div>
-                </div>
-            </section>
+            <PageHeroSection
+                title="Proyectos destacados para el sector corporativo e inmobiliario."
+                highlightedText="sector corporativo e inmobiliario."
+                description="Desde oficinas corporativas hasta espacios comerciales, cada proyecto refleja nuestro compromiso con la calidad, el diseño y la funcionalidad."
+            />
 
             {/* Projects Grid - Bento Style */}
             <section className="py-16 md:py-24">

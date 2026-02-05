@@ -2,6 +2,7 @@ import Link from "next/link";
 import { siteConfig } from "@/config/site";
 import { Separator } from "@/components/ui/separator";
 import { Facebook, Instagram, Linkedin } from "lucide-react";
+import { services } from "@/data/services";
 
 export function Footer() {
     const currentYear = new Date().getFullYear();
@@ -70,7 +71,7 @@ export function Footer() {
                             Servicios
                         </h4>
                         <nav className="flex flex-col gap-2">
-                            {siteConfig.services.map((service) => (
+                            {services.map((service) => (
                                 <Link
                                     key={service.id}
                                     href={`/servicios#${service.id}`}

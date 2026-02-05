@@ -2,16 +2,9 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Blinds, Armchair, PanelTop, Wrench, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
-import { siteConfig } from "@/config/site";
-
-const iconMap = {
-    Blinds,
-    Armchair,
-    PanelTop,
-    Wrench,
-};
+import { services } from "@/data/services";
 
 const containerVariants = {
     hidden: { opacity: 0 },
@@ -65,8 +58,8 @@ export function ServicesSection() {
                     viewport={{ once: true }}
                     className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
                 >
-                    {siteConfig.services.map((service) => {
-                        const Icon = iconMap[service.icon as keyof typeof iconMap];
+                    {services.map((service) => {
+                        const Icon = service.icon;
                         return (
                             <motion.div key={service.id} variants={itemVariants}>
                                 <Link href={`/servicios#${service.id}`}>

@@ -1,122 +1,34 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { Blinds, Armchair, PanelTop, Wrench, CheckCircle } from "lucide-react";
+import { CheckCircle } from "lucide-react";
 import { FancyButton } from "@/components/shared/buttons/fancy-button";
-import { CTASection } from "@/components/sections/cta-section";
+import { PageHeroSection, CTASection } from "@/components/sections";
+import { services } from "@/data/services";
 
 export const metadata: Metadata = {
     title: "Servicios",
     description: "Servicios profesionales de cortinas técnicas, mobiliario a medida, sistemas de vidrio e instalación para proyectos corporativos.",
 };
 
-const services = [
-    {
-        id: "mobiliario-medida",
-        icon: Armchair,
-        title: "Mobiliario a Medida",
-        description: "Fabricación de mobiliario diseñado para cada proyecto",
-        image: "/images/services/muebleria_medida.png",
-        fullDescription: "Diseño y fabricación de mobiliario corporativo en melamina de alta calidad. Creamos soluciones a medida para oficinas, recepción, áreas comunes y espacios comerciales con acabados profesionales y funcionalidad óptima.",
-        features: [
-            "Mobiliario de oficina y recepción",
-            "Sistemas de almacenamiento",
-            "Estaciones de trabajo modulares",
-            "Muebles para áreas comunes",
-            "Acabados en melamina premium",
-            "Diseño funcional y ergonómico",
-        ],
-    },
-    {
-        id: "cortinas-tecnicas",
-        icon: Blinds,
-        title: "Cortinas Técnicas",
-        description: "Soluciones funcionales para control de luz y privacidad",
-        image: "/images/services/cortinas_tecnicas.png",
-        fullDescription: "Fabricación e instalación de sistemas de cortinas técnicas para espacios corporativos y comerciales. Ofrecemos cortinas roller, panel screen, persianas verticales y horizontales con acabados profesionales y materiales de alta durabilidad.",
-        features: [
-            "Cortinas roller blackout y sunscreen",
-            "Sistemas motorizados y automatizados",
-            "Panel screen para grandes ventanales",
-            "Persianas de aluminio y PVC",
-            "Instalación técnica profesional",
-            "Garantía y mantenimiento",
-        ],
-    },
-    {
-        id: "sistemas-vidrio",
-        icon: PanelTop,
-        title: "Sistemas de Vidrio",
-        description: "Instalación de sistemas de vidrio para obras",
-        image: "/images/services/sistemas_vidrio.png",
-        fullDescription: "Instalación profesional de sistemas de vidrio templado y laminado para divisiones, mamparas, puertas y acabados arquitectónicos. Trabajamos con especificaciones técnicas precisas para proyectos de construcción y remodelación.",
-        features: [
-            "Mamparas y divisiones de oficina",
-            "Puertas de vidrio templado",
-            "Barandas y pasamanos",
-            "Fachadas y ventanales",
-            "Vidrio laminado de seguridad",
-            "Instalación con herrajes de calidad",
-        ],
-    },
-    {
-        id: "instalacion-profesional",
-        icon: Wrench,
-        title: "Instalación Profesional",
-        description: "Ejecución técnica con precisión y cumplimiento",
-        image: "/images/services/instalacion_profesional.png",
-        fullDescription: "Servicio de instalación profesional para todos nuestros productos. Contamos con personal técnico capacitado que garantiza la correcta ejecución de cada proyecto, cumpliendo con plazos y especificaciones técnicas.",
-        features: [
-            "Personal técnico especializado",
-            "Cumplimiento de plazos",
-            "Supervisión de obra",
-            "Control de calidad en sitio",
-            "Documentación de entrega",
-            "Garantía de instalación",
-        ],
-    },
-];
-
-
 export default function ServicesPage() {
     return (
         <>
-            {/* Hero Section */}
-            <section className="relative py-16 bg-background mt-25">
-                {/* Background Pattern */}
-                <div className="absolute inset-0 opacity-[0.03]">
-                    <div
-                        className="absolute inset-0"
-                        style={{
-                            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%230E6F73' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-                        }}
-                    />
-                </div>
-
-                <div className="container mx-auto px-4 md:px-6">
-                    <div className="max-w-3xl">
-                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground mb-6 uppercase">
-                            Servicios profesionales para proyectos de{" "}
-                            <span className="text-primary">interior y obra</span>
-                        </h1>
-                        <p className="text-lg md:text-xl text-muted-foreground mb-8">
-                            Ofrecemos servicios especializados con enfoque en ejecución,
-                            precisión y cumplimiento técnico para proyectos corporativos.
-                        </p>
-                    </div>
-                </div>
-            </section>
+            <PageHeroSection
+                title="Servicios profesionales para proyectos de interior y obra"
+                highlightedText="interior y obra"
+                description="Ofrecemos servicios especializados con enfoque en ejecución, precisión y cumplimiento técnico para proyectos corporativos."
+            />
 
             {/* Services Details */}
             {services.map((service, index) => {
-                const Icon = service.icon;
                 const isEven = index % 2 === 0;
 
                 return (
                     <section
                         key={service.id}
                         id={service.id}
-                        className={` ${isEven ? "bg-background" : "bg-card"}`}
+                        className={isEven ? "bg-background" : "bg-card"}
                     >
                         <div className="w-full mx-auto px-0">
                             <div className="grid lg:grid-cols-5 min-h-[600px]">
@@ -134,7 +46,7 @@ export default function ServicesPage() {
                                 </div>
 
                                 {/* Content Panel - 60% */}
-                                <div className={`lg:col-span-3 ${isEven ? "bg-foreground" : "bg-background"} ${isEven ? "text-background" : "text-foreground"} ${isEven ? "lg:order-2" : "lg:order-1"}`}>
+                                <div className={`lg:col-span-3 ${isEven ? "bg-foreground text-background lg:order-2" : "bg-background text-foreground lg:order-1"}`}>
                                     <div className="h-full flex flex-col justify-between p-8 md:p-12 lg:p-16">
                                         {/* Top Content */}
                                         <div>
@@ -154,7 +66,7 @@ export default function ServicesPage() {
 
                                         {/* Bottom Icons flex wrap */}
                                         <div className="flex flex-wrap gap-6">
-                                            {service.features.map((feature, idx) => (
+                                            {service.features.map((feature) => (
                                                 <div key={feature} className="group flex items-center gap-3">
                                                     <CheckCircle className={`w-6 h-6 ${isEven ? "text-accent" : "text-primary"} group-hover:text-primary transition-colors`} />
                                                     <span className={`text-xs text-center ${isEven ? "text-muted-background" : "text-muted-foreground"} line-clamp-2`}>{feature}</span>

@@ -47,34 +47,6 @@ export const siteConfig = {
     { name: "Nosotros", href: "/nosotros" },
     { name: "Contacto", href: "/contacto" },
   ],
-
-  // Servicios
-  services: [
-    {
-      id: "cortinas-tecnicas",
-      title: "Cortinas Técnicas",
-      description: "Soluciones funcionales para control de luz y privacidad en espacios corporativos y comerciales.",
-      icon: "Blinds",
-    },
-    {
-      id: "mobiliario-medida",
-      title: "Mobiliario a Medida",
-      description: "Fabricación de mobiliario en melamina diseñado específicamente para las necesidades de cada proyecto.",
-      icon: "Armchair",
-    },
-    {
-      id: "sistemas-vidrio",
-      title: "Sistemas de Vidrio",
-      description: "Instalación de sistemas de vidrio para obras, divisiones y acabados arquitectónicos.",
-      icon: "PanelTop",
-    },
-    {
-      id: "instalacion-profesional",
-      title: "Instalación Profesional",
-      description: "Ejecución técnica con precisión y cumplimiento de plazos en todos los proyectos.",
-      icon: "Wrench",
-    },
-  ],
 } as const;
 
 export type SiteConfig = typeof siteConfig;

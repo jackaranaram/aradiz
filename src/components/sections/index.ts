@@ -3,3 +3,7 @@ export { ServicesSection } from "./services-section";
 export { ProjectsSection } from "./projects-section";
 export { CTASection } from "./cta-section";
 export { AboutSection } from "./about-section";
+export { PageHeroSection } from "./page-hero-section";
+export { ValuesSection } from "./values-section";
+export { FeatureListSection } from "./feature-list-section";
+export { ContactFormSection } from "./contact-form-section";
