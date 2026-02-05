@@ -2,24 +2,12 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { siteConfig } from "@/config/site";
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { useScroll } from "@/hooks/use-scroll";
 
 export function WhatsAppButton() {
     const [isHovered, setIsHovered] = useState(false);
-    const [isVisible, setIsVisible] = useState(false);
-
-    useEffect(() => {
-        const toggleVisibility = () => {
-            if (window.scrollY > 20) {
-                setIsVisible(true);
-            } else {
-                setIsVisible(false);
-            }
-        };
-
-        window.addEventListener("scroll", toggleVisibility);
-        return () => window.removeEventListener("scroll", toggleVisibility);
-    }, []);
+    const { isScrolled: isVisible } = useScroll(20); // Aparece tras el primer scroll (threshold 20)
 
     const whatsappUrl = `https://wa.me/${siteConfig.contact.whatsapp}?text=${encodeURIComponent(
         siteConfig.contact.whatsappMessage
