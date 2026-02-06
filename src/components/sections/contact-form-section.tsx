@@ -7,8 +7,6 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent } from "@/components/ui/card";
-import { db } from "@/lib/firebase";
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 
 interface ContactFormSectionProps {
     className?: string;
@@ -40,33 +38,54 @@ export function ContactFormSection({ className = "" }: ContactFormSectionProps) 
         setIsSubmitting(true);
         setError("");
 
-        console.log("Iniciando envío de formulario a Firestore...");
-        console.log("Config actual:", {
-            projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
-            authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
-        });
-
-        const timeoutPromise = new Promise((_, reject) =>
-            setTimeout(
-                () =>
-                    reject(
-                        new Error("Timeout: Firebase no responde tras 10 segundos")
-                    ),
-                10000
-            )
-        );
-
         try {
-            // Save to Firestore with timeout
-            const addPromise = addDoc(collection(db, "leads"), {
-                ...formData,
-                createdAt: serverTimestamp(),
+            // Importar Firestore dinámicamente para evitar errores de SSR
+            const { db } = await import("@/lib/firebase");
+            const { collection, addDoc, Timestamp } = await import("firebase/firestore");
+
+            // 1. Guardar en colección leads (registro)
+            const leadRef = await addDoc(collection(db, "leads"), {
+                name: formData.name,
+                email: formData.email,
+                company: formData.company || "",
+                phone: formData.phone || "",
+                message: formData.message,
                 status: "nuevo",
+                createdAt: Timestamp.now(),
             });
 
-            await Promise.race([addPromise, timeoutPromise]);
+            console.log("Lead guardado con ID:", leadRef.id);
 
-            console.log("Documento guardado exitosamente");
+            // 2. Crear documento para envío de email (la extensión MailerSend lo procesa)
+            await addDoc(collection(db, "emails"), {
+                to: [{
+                    email: "jackaranaramos@gmail.com",
+                    name: "Equipo Aradiz"
+                }],
+                from: {
+                    email: "noreply@test-68zxl2713ne4j905.mlsender.net",
+                    name: "Formulario Aradiz",
+                },
+                reply_to: {
+                    email: formData.email,
+                    name: formData.name
+                },
+                template_id: "z3m5jgr0780gdpyo",
+                personalization: [
+                    {
+                        email: "jackaranaramos@gmail.com",
+                        data: {
+                            name: formData.name,
+                            email: formData.email,
+                            phone: formData.phone || "No especificado",
+                            company: formData.company || "No especificada",
+                            message: formData.message,
+                            leadId: leadRef.id,
+                        },
+                    },
+                ],
+            });
+
             setIsSuccess(true);
             setFormData({
                 name: "",
@@ -79,10 +98,11 @@ export function ContactFormSection({ className = "" }: ContactFormSectionProps) 
             setTimeout(() => {
                 setIsSuccess(false);
             }, 5000);
-        } catch (err: any) {
-            console.error("Error detallado Firebase:", err);
+        } catch (err: unknown) {
+            const errorMessage =
+                err instanceof Error ? err.message : "Error desconocido";
             setError(
-                `Error: ${err.message || "Error desconocido"}. Por favor, contáctanos por WhatsApp.`
+                `${errorMessage}. Por favor, contáctanos por WhatsApp.`
             );
         } finally {
             setIsSubmitting(false);

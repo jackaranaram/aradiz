@@ -7,7 +7,7 @@ import { Menu, X } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { Button } from "@/components/ui/button";
 import { FancyButton } from "@/components/shared/buttons/fancy-button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { useScroll } from "@/hooks/use-scroll";
 
 export function Navbar() {
@@ -30,7 +30,7 @@ export function Navbar() {
                 }`}>
                 {/* Logo */}
                 <Link href="/" className="flex flex-col leading-none">
-                    <span className="text-2xl font-bold tracking-tighter text-primary uppercase">
+                    <span className="text-2xl font-bold tracking-tighter text-primary">
                         aradiz
                     </span>
                     <span className="text-[10px] font-medium tracking-[0.2em] text-foreground/80 uppercase">
@@ -83,17 +83,10 @@ export function Navbar() {
                             <span className="sr-only">Abrir menú</span>
                         </Button>
                     </SheetTrigger>
-                    <SheetContent side="right" className="w-[300px] sm:w-[400px]">
-                        <div className="flex flex-col gap-6 mt-8">
-                            <Link href="/" onClick={() => setIsOpen(false)} className="flex flex-col leading-none">
-                                <span className="text-xl font-bold tracking-tighter text-primary uppercase">
-                                    aradiz
-                                </span>
-                                <span className="text-[9px] font-medium tracking-[0.2em] text-foreground/80 uppercase">
-                                    Grupo Corporativo
-                                </span>
-                            </Link>
-                            <nav className="flex flex-col gap-4">
+                    <SheetContent side="top" className="h-auto max-h-[80vh] overflow-y-auto bg-background/40 backdrop-blur-md border-b border-border/10">
+                        <SheetTitle className="sr-only">Menú de navegación</SheetTitle>
+                        <div className="container mx-auto px-4 py-6 flex flex-col gap-6">
+                            <nav className="flex flex-col gap-3">
                                 {siteConfig.navigation.map((item) => {
                                     const isActive = pathname === item.href;
                                     return (
@@ -101,7 +94,7 @@ export function Navbar() {
                                             key={item.href}
                                             href={item.href}
                                             onClick={() => setIsOpen(false)}
-                                            className={`text-lg font-medium transition-colors ${isActive
+                                            className={`text-base font-medium transition-colors py-2 ${isActive
                                                 ? "text-primary font-semibold"
                                                 : "text-foreground hover:text-primary"
                                                 }`}
@@ -111,7 +104,7 @@ export function Navbar() {
                                     );
                                 })}
                             </nav>
-                            <Button asChild className="mt-4">
+                            <Button asChild className="w-full">
                                 <a
                                     href={whatsappUrl}
                                     target="_blank"

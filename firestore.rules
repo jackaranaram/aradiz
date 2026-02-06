@@ -12,6 +12,18 @@ service cloud.firestore {
       allow read, update, delete: if false;
     }
     
+    // Reglas para la colección de emails (MailerSend Extension)
+    match /emails/{emailId} {
+      // Permitir creación de documentos de email desde el cliente
+      allow create: if request.resource.data.keys().hasAll(['to', 'template_id', 'personalization'])
+                    && request.resource.data.to is list
+                    && request.resource.data.template_id is string;
+      
+      // Bloquear lectura, actualización y eliminación desde el cliente
+      // La extensión MailerSend tiene permisos administrativos para procesar estos documentos
+      allow read, update, delete: if false;
+    }
+    
     // Bloquear acceso a cualquier otra colección
     match /{document=**} {
       allow read, write: if false;

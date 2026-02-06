@@ -68,7 +68,7 @@ export function HeroSection() {
 
 
     return (
-        <section className="relative min-h-screen flex items-end justify-start overflow-hidden [--slide-width:100vw] xl:[--slide-width:calc(100vw-6rem)] shadow-2xl">
+        <section className="relative min-h-screen flex items-end justify-start overflow-hidden [--slide-width:100vw] shadow-2xl">
             {/* Carousel - solo los slides */}
             <div className="h-screen relative z-10 overflow-hidden">
                 {/* Track del carrusel - Contiene TODAS las imágenes duplicadas */}
@@ -159,17 +159,17 @@ export function HeroSection() {
                     </div>
 
                     {/* Controles de navegación */}
-                    <div className="absolute bottom-6 right-0 flex text-background pointer-events-auto px-4 md:px-6">
+                    <div className="absolute bottom-6 right-0 flex gap-2 text-background pointer-events-auto px-4 md:px-6">
                         <button
                             onClick={prevSlide}
-                            className="p-3 rounded-full bg-foreground backdrop-blur-sm hover:bg-foreground transition-colors"
+                            className="p-4 rounded-full bg-foreground/80 backdrop-blur-sm hover:bg-foreground/70 transition-colors cursor-pointer"
                             aria-label="Imagen anterior"
                         >
                             <ChevronLeft className="h-5 w-5" />
                         </button>
                         <button
                             onClick={nextSlide}
-                            className="p-3 rounded-full bg-foreground backdrop-blur-sm hover:bg-foreground transition-colors"
+                            className="p-4 rounded-full bg-foreground/80 backdrop-blur-sm hover:bg-foreground/70 transition-colors cursor-pointer"
                             aria-label="Siguiente imagen"
                         >
                             <ChevronRight className="h-5 w-5" />
