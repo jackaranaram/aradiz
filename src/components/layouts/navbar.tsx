@@ -30,7 +30,7 @@ export function Navbar() {
                 }`}>
                 {/* Logo */}
                 <Link href="/" className="flex flex-col leading-none">
-                    <span className="text-2xl font-bold tracking-tighter text-primary uppercase">
+                    <span className="text-2xl font-bold tracking-tighter text-primary">
                         aradiz
                     </span>
                     <span className="text-[10px] font-medium tracking-[0.2em] text-foreground/80 uppercase">
