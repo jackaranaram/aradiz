@@ -45,7 +45,7 @@ export function AboutSection() {
                     />
                     <div className="absolute inset-0 bg-foreground/80" />
                 </div>
-                <div className="container mx-auto">
+                <div className="container mx-auto px-4 md:px-6">
 
 
                     {/* Content Panel - Overlays on right side */}
@@ -54,7 +54,7 @@ export function AboutSection() {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
-                        className="relative md:w-[65%] lg:w-[60%] ml-auto top-12 h-full bg-linear-to-b from-background via-background to-white text-white p-8 md:p-12 lg:p-16 flex flex-col justify-center shadow-2xl"
+                        className="relative w-full lg:w-[80%] xl:w-[60%] ml-auto top-12 h-full bg-background p-8 md:p-12 lg:p-16 shadow-2xl z-10"
                     >
                         <div className="max-w-3xl">
                             <span className="text-sm font-semibold uppercase tracking-wider text-primary mb-3 block">

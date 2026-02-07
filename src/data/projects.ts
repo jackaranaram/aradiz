@@ -52,23 +52,5 @@ export const allProjects = [
         year: "2023",
         image: "/images/projects/project-1.jpg",
         description: "Estaciones de trabajo colaborativas y salas de reunión para startup tecnológica.",
-    },
-    {
-        id: 7,
-        title: "Hotel Ejecutivo Lima",
-        category: "Cortinas técnicas",
-        location: "Miraflores, Lima",
-        year: "2023",
-        image: "/images/projects/project-2.jpg",
-        description: "Cortinas blackout y sunscreen para 120 habitaciones.",
-    },
-    {
-        id: 8,
-        title: "Oficinas Financieras",
-        category: "Sistemas de vidrio",
-        location: "San Isidro, Lima",
-        year: "2024",
-        image: "/images/projects/project-3.jpg",
-        description: "Divisiones de vidrio de alta seguridad para entidad bancaria.",
-    },
+    }
 ];

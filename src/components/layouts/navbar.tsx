@@ -46,7 +46,7 @@ export function Navbar() {
                             <Link
                                 key={item.href}
                                 href={item.href}
-                                className={`text-xs font-medium transition-colors uppercase ${isActive
+                                className={`text-sm font-medium transition-colors ${isActive
                                     ? "text-primary"
                                     : "text-black hover:text-primary"
                                     }`}
@@ -83,9 +83,9 @@ export function Navbar() {
                             <span className="sr-only">Abrir menú</span>
                         </Button>
                     </SheetTrigger>
-                    <SheetContent side="top" className="h-auto max-h-[80vh] overflow-y-auto bg-background/40 backdrop-blur-md border-b border-border/10">
+                    <SheetContent side="top" className="h-auto max-h-[80vh] overflow-y-auto bg-black/60 backdrop-blur-md border-none [&>button]:text-white">
                         <SheetTitle className="sr-only">Menú de navegación</SheetTitle>
-                        <div className="container mx-auto px-4 py-6 flex flex-col gap-6">
+                        <div className="container mx-auto px-6 py-8 flex flex-col gap-6">
                             <nav className="flex flex-col gap-3">
                                 {siteConfig.navigation.map((item) => {
                                     const isActive = pathname === item.href;
@@ -94,9 +94,9 @@ export function Navbar() {
                                             key={item.href}
                                             href={item.href}
                                             onClick={() => setIsOpen(false)}
-                                            className={`text-base font-medium transition-colors py-2 ${isActive
+                                            className={`text-sm font-medium transition-colors py-2 ${isActive
                                                 ? "text-primary font-semibold"
-                                                : "text-foreground hover:text-primary"
+                                                : "text-background hover:text-primary"
                                                 }`}
                                         >
                                             {item.name}

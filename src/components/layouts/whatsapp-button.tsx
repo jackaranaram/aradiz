@@ -7,7 +7,7 @@ import { useScroll } from "@/hooks/use-scroll";
 
 export function WhatsAppButton() {
     const [isHovered, setIsHovered] = useState(false);
-    const { isScrolled: isVisible } = useScroll(20); // Aparece tras el primer scroll (threshold 20)
+    const { isScrolled: isVisible } = useScroll(0); // Aparece tras el primer scroll (threshold 20)
 
     const whatsappUrl = `https://wa.me/${siteConfig.contact.whatsapp}?text=${encodeURIComponent(
         siteConfig.contact.whatsappMessage

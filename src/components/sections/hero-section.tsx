@@ -108,6 +108,7 @@ export function HeroSection() {
                                 aria-label={`Slide ${(index % carouselImages.length) + 1}`}
                             />
                             <div className="absolute inset-0 bg-linear-to-r from-background via-background/60 to-transparent" />
+                            <div className="absolute inset-0 bg-linear-to-b from-background via-transparent to-transparent" />
                         </div>
                     ))}
                 </motion.div>
@@ -122,7 +123,7 @@ export function HeroSection() {
                             initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, ease: "easeOut" }}
-                            className="text-5xl md:text-7xl font-extrabold tracking-tighter text-foreground mb-8 uppercase leading-[0.9]"
+                            className="text-5xl md:text-7xl font-extrabold tracking-tighter text-foreground mb-8 leading-[1.1]"
                         >
                             Ejecución profesional de{" "}
                             <span className="text-primary">soluciones a medida</span> para

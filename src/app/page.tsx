@@ -19,7 +19,6 @@ export default function HomePage() {
       <HeroSection />
       <ServicesSection />
       <AboutSection />
-      <ProjectsSection />
       <CTASection />
     </>
   );
