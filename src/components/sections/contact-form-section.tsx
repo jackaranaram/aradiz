@@ -59,7 +59,7 @@ export function ContactFormSection({ className = "" }: ContactFormSectionProps) 
             // 2. Crear documento para envío de email (la extensión MailerSend lo procesa)
             await addDoc(collection(db, "emails"), {
                 to: [{
-                    email: "jackaranaramos@gmail.com",
+                    email: "liz.arana55@gmail.com",
                     name: "Equipo Aradiz"
                 }],
                 from: {
@@ -73,7 +73,7 @@ export function ContactFormSection({ className = "" }: ContactFormSectionProps) 
                 template_id: "z3m5jgr0780gdpyo",
                 personalization: [
                     {
-                        email: "jackaranaramos@gmail.com",
+                        email: "liz.arana55@gmail.com",
                         data: {
                             name: formData.name,
                             email: formData.email,

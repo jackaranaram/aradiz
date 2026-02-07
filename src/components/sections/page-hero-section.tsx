@@ -51,7 +51,7 @@ export function PageHeroSection({
                     transition={{ duration: 0.6 }}
                     className="max-w-4xl"
                 >
-                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground mb-6 uppercase">
+                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground mb-6">
                         {renderTitle()}
                     </h1>
                     <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">

@@ -30,7 +30,7 @@ export default function ServicesPage() {
                         id={service.id}
                         className={isEven ? "bg-background" : "bg-card"}
                     >
-                        <div className="w-full mx-auto px-0">
+                        <div className="w-full px-0">
                             <div className="grid lg:grid-cols-5 min-h-[600px]">
                                 {/* Image Section - 40% */}
                                 <div className={`lg:col-span-2 relative ${isEven ? "lg:order-1" : "lg:order-2"}`}>
@@ -47,7 +47,7 @@ export default function ServicesPage() {
 
                                 {/* Content Panel - 60% */}
                                 <div className={`lg:col-span-3 ${isEven ? "bg-foreground text-background lg:order-2" : "bg-background text-foreground lg:order-1"}`}>
-                                    <div className="h-full flex flex-col justify-between p-8 md:p-12 lg:p-16">
+                                    <div className="h-full flex flex-col gap-8 justify-between p-8 py-12 md:p-12 lg:p-16">
                                         {/* Top Content */}
                                         <div>
                                             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight">
@@ -64,7 +64,7 @@ export default function ServicesPage() {
                                             </p>
                                         </div>
 
-                                        {/* Bottom Icons flex wrap */}
+                                        {/* Icons flex wrap */}
                                         <div className="flex flex-wrap gap-6">
                                             {service.features.map((feature) => (
                                                 <div key={feature} className="group flex items-center gap-3">

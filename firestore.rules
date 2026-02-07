@@ -24,6 +24,15 @@ service cloud.firestore {
       allow read, update, delete: if false;
     }
     
+    // Reglas para la colección de proyectos
+    match /projects/{projectId} {
+      // Permitir lectura pública de proyectos
+      allow read: if true;
+      
+      // Solo administradores pueden crear/editar/eliminar (desde Firebase Console)
+      allow write: if false;
+    }
+    
     // Bloquear acceso a cualquier otra colección
     match /{document=**} {
       allow read, write: if false;
