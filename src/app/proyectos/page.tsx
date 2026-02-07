@@ -3,7 +3,7 @@ import Image from "next/image";
 
 import { PageHeroSection, CTASection } from "@/components/sections";
 import { cn } from "@/lib/utils";
-import { allProjects } from "@/data/projects";
+import { getProjects } from "@/lib/services/projects";
 
 export const metadata: Metadata = {
     title: "Proyectos",
@@ -11,7 +11,9 @@ export const metadata: Metadata = {
 };
 
 
-export default function ProjectsPage() {
+export default async function ProjectsPage() {
+    const projects = await getProjects();
+
     return (
         <>
             <PageHeroSection
@@ -24,7 +26,7 @@ export default function ProjectsPage() {
             <section>
                 <div className="w-full mx-auto">
                     <div className="grid grid-cols-1 md:grid-cols-4 auto-rows-[300px]">
-                        {allProjects.map((project, index) => {
+                        {projects.map((project, index) => {
                             // Define custom spans for Bento Grid
                             const bentoSpans = [
                                 "md:col-span-2 md:row-span-2", // 1: Large
@@ -45,9 +47,9 @@ export default function ProjectsPage() {
                                     )}
                                 >
                                     {/* Image */}
-                                    <div className="absolute inset-0 z-0">
+                                    <div className="absolute inset-0 z-0 bg-foreground">
                                         <Image
-                                            src={project.image}
+                                            src={project.imageUrl}
                                             alt={project.title}
                                             fill
                                             className="object-cover transition-transform duration-700 group-hover:scale-110"

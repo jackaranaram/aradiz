@@ -107,7 +107,7 @@ export function HeroSection() {
                                 role="img"
                                 aria-label={`Slide ${(index % carouselImages.length) + 1}`}
                             />
-                            <div className="absolute inset-0 bg-linear-to-r from-background via-background/60 to-transparent" />
+                            <div className="absolute inset-0 bg-linear-to-r from-background via-background/40 to-transparent" />
                             <div className="absolute inset-0 bg-linear-to-b from-background via-transparent to-transparent" />
                         </div>
                     ))}
