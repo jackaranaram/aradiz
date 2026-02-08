@@ -97,6 +97,7 @@ const FancyButton = React.forwardRef<HTMLButtonElement, FancyButtonProps>(
                 >
                     {React.cloneElement(child, {
                         children: renderContent(child.props.children)
+                        // eslint-disable-next-line @typescript-eslint/no-explicit-any
                     } as any)}
                 </Comp>
             )

@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { collection, getDocs, query, orderBy, updateDoc, doc, deleteDoc } from 'firebase/firestore';
 import { db } from '@/lib/firebase';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Loader2, Mail, Phone, Building2, Trash2, CheckCircle2, Inbox } from 'lucide-react';
@@ -122,7 +122,7 @@ export default function LeadsPage() {
             ) : (
                 <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
                     {leads.map((lead) => (
-                        <Card key={lead.id} className={lead.status === 'nuevo' ? 'border-primary/20 bg-primary/[0.02]' : ''}>
+                        <Card key={lead.id} className={lead.status === 'nuevo' ? 'border-primary/20 bg-primary/2' : ''}>
                             <CardHeader className="pb-2">
                                 <div className="flex items-start justify-between">
                                     <div className="space-y-1">

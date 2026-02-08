@@ -2,9 +2,9 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { FancyButton } from "@/components/shared/buttons/fancy-button";
-import { siteConfig } from "@/config/site";
+
 import { useState, useEffect, useCallback } from "react";
 
 // Imágenes del carrusel - agrega tus imágenes aquí

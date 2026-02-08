@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { collection, addDoc, updateDoc, deleteDoc, doc } from 'firebase/firestore';
 import { ref, uploadBytes, getDownloadURL, deleteObject } from 'firebase/storage';
 import { db, storage } from '@/lib/firebase';
-import type { Project, ProjectFormData } from '@/types/project';
+import type { ProjectFormData } from '@/types/project';
 
 export function useProjects() {
     const [loading, setLoading] = useState(false);

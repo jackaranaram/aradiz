@@ -6,6 +6,6 @@ export interface Lead {
     phone: string;
     message: string;
     status: 'nuevo' | 'leído' | 'respondido' | 'archivado';
-    createdAt: any; // Firebase Timestamp
-    updatedAt: any; // Firebase Timestamp
+    createdAt: Date;
+    updatedAt: Date;
 }
