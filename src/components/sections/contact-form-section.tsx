@@ -43,6 +43,7 @@ export function ContactFormSection({ className = "" }: ContactFormSectionProps) 
             const { db } = await import("@/lib/firebase");
             const { collection, addDoc, Timestamp } = await import("firebase/firestore");
 
+            const now = Timestamp.now();
             // 1. Guardar en colección leads (registro)
             const leadRef = await addDoc(collection(db, "leads"), {
                 name: formData.name,
@@ -51,7 +52,8 @@ export function ContactFormSection({ className = "" }: ContactFormSectionProps) 
                 phone: formData.phone || "",
                 message: formData.message,
                 status: "nuevo",
-                createdAt: Timestamp.now(),
+                createdAt: now,
+                updatedAt: now,
             });
 
             console.log("Lead guardado con ID:", leadRef.id);

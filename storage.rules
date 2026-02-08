@@ -2,11 +2,14 @@ rules_version = '2';
 
 service firebase.storage {
   match /b/{bucket}/o {
-    // Public read access for project images
+    // Reglas para imágenes de proyectos
     match /projects/{imageId} {
+      // Todos pueden leer imágenes (sitio público)
       allow read: if true;
-      // Only admin via Firebase Console can upload/delete
-      allow write: if false;
+      
+      // Solo usuarios autenticados pueden subir y eliminar imágenes
+      // La verificación de admin se hace en el cliente
+      allow write, delete: if request.auth != null;
     }
   }
 }

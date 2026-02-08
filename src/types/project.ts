@@ -8,6 +8,17 @@ export interface Project {
     description: string;
     featured?: boolean; // Optional: highlight certain projects
     order?: number; // Optional: manual ordering
-    createdAt?: Date;
-    updatedAt?: Date;
+    createdAt: Date;
+    updatedAt: Date;
+}
+
+export interface ProjectFormData {
+    id?: string;
+    title: string;
+    description: string;
+    category: string;
+    location: string;
+    year: string;
+    image?: File | null;
+    currentImageUrl?: string;
 }
