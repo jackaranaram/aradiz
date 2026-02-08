@@ -26,11 +26,13 @@ env:
     value: G-1WPN212PC4
     availability: [BUILD, RUNTIME]
 
-  # Other variables for server-side use only
-  # Standard variables
-  - variable: MAILERSEND_FROM_EMAIL
+  # MailerSend Configuration (needed for client-side contact form)
+  - variable: NEXT_PUBLIC_MAILERSEND_FROM_EMAIL
     value: noreply@test-68zxl2713ne4j905.mlsender.net
-  - variable: MAILERSEND_TO_EMAIL
+    availability: [BUILD, RUNTIME]
+  - variable: NEXT_PUBLIC_MAILERSEND_TO_EMAIL
     value: jackaranaramos@gmail.com
-  - variable: MAILERSEND_TEMPLATE_ID
+    availability: [BUILD, RUNTIME]
+  - variable: NEXT_PUBLIC_MAILERSEND_TEMPLATE_ID
     value: z3m5jgr0780gdpyo
+    availability: [BUILD, RUNTIME]

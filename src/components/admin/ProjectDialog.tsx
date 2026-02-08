@@ -1,12 +1,13 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
-import { Loader2, Trash2, Upload } from 'lucide-react';
+import { Switch } from '@/components/ui/switch';
+import { Loader2, Trash2, Upload, Star } from 'lucide-react';
 import type { Project } from '@/types/project';
 import Image from 'next/image';
 
@@ -20,14 +21,31 @@ interface ProjectDialogProps {
 
 export function ProjectDialog({ open, onOpenChange, onSubmit, project, loading }: ProjectDialogProps) {
     const [formData, setFormData] = useState({
-        title: project?.title || '',
-        description: project?.description || '',
-        category: project?.category || '',
-        location: project?.location || '',
-        year: project?.year || new Date().getFullYear().toString(),
+        title: '',
+        description: '',
+        category: '',
+        location: '',
+        year: new Date().getFullYear().toString(),
+        featured: false,
     });
     const [imageFile, setImageFile] = useState<File | null>(null);
-    const [imagePreview, setImagePreview] = useState<string | null>(project?.imageUrl || null);
+    const [imagePreview, setImagePreview] = useState<string | null>(null);
+
+    // Reset form when dialog opens or project changes
+    useEffect(() => {
+        if (open) {
+            setFormData({
+                title: project?.title || '',
+                description: project?.description || '',
+                category: project?.category || '',
+                location: project?.location || '',
+                year: project?.year || new Date().getFullYear().toString(),
+                featured: project?.featured || false,
+            });
+            setImageFile(null);
+            setImagePreview(project?.imageUrl || null);
+        }
+    }, [open, project]);
 
 
     const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -56,6 +74,7 @@ export function ProjectDialog({ open, onOpenChange, onSubmit, project, loading }
         data.append('category', formData.category);
         data.append('location', formData.location);
         data.append('year', formData.year);
+        data.append('featured', formData.featured.toString());
 
         if (imageFile) {
             data.append('image', imageFile);
@@ -178,6 +197,24 @@ export function ProjectDialog({ open, onOpenChange, onSubmit, project, loading }
                             required
                             min="2000"
                             max={new Date().getFullYear()}
+                        />
+                    </div>
+
+                    {/* Featured Toggle */}
+                    <div className="flex items-center justify-between rounded-lg border border-border p-4">
+                        <div className="space-y-0.5">
+                            <Label htmlFor="featured" className="flex items-center gap-2 text-base font-medium">
+                                <Star className="w-4 h-4 text-amber-500" />
+                                Proyecto Destacado
+                            </Label>
+                            <p className="text-sm text-muted-foreground">
+                                Los proyectos destacados aparecerán primero en la galería.
+                            </p>
+                        </div>
+                        <Switch
+                            id="featured"
+                            checked={formData.featured}
+                            onCheckedChange={(checked) => setFormData({ ...formData, featured: checked })}
                         />
                     </div>
 

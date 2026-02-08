@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { collection, getDocs, addDoc, updateDoc, deleteDoc, doc } from 'firebase/firestore';
+import { collection, getDocs, addDoc, updateDoc, deleteDoc, doc, writeBatch, query, orderBy } from 'firebase/firestore';
 import { ref, uploadBytes, getDownloadURL, deleteObject } from 'firebase/storage';
 import { db, storage } from '@/lib/firebase';
 import { Button } from '@/components/ui/button';
@@ -21,6 +21,62 @@ import {
     AlertDialogTitle,
 } from '@/components/ui/alert-dialog';
 
+// dnd-kit imports
+import {
+    DndContext,
+    closestCenter,
+    KeyboardSensor,
+    PointerSensor,
+    useSensor,
+    useSensors,
+    DragEndEvent,
+} from '@dnd-kit/core';
+import {
+    arrayMove,
+    SortableContext,
+    sortableKeyboardCoordinates,
+    useSortable,
+    rectSortingStrategy,
+} from '@dnd-kit/sortable';
+import { CSS } from '@dnd-kit/utilities';
+
+// Sortable wrapper for ProjectCard
+function SortableProjectCard({
+    project,
+    onEdit,
+    onDelete,
+}: {
+    project: Project;
+    onEdit: (project: Project) => void;
+    onDelete: (project: Project) => void;
+}) {
+    const {
+        attributes,
+        listeners,
+        setNodeRef,
+        transform,
+        transition,
+        isDragging,
+    } = useSortable({ id: project.id });
+
+    const style = {
+        transform: CSS.Transform.toString(transform),
+        transition,
+    };
+
+    return (
+        <ProjectCard
+            ref={setNodeRef}
+            style={style}
+            project={project}
+            onEdit={onEdit}
+            onDelete={onDelete}
+            dragHandleProps={{ ...attributes, ...listeners }}
+            isDragging={isDragging}
+        />
+    );
+}
+
 export default function ProyectosPage() {
     const [projects, setProjects] = useState<Project[]>([]);
     const [loading, setLoading] = useState(true);
@@ -30,15 +86,26 @@ export default function ProyectosPage() {
     const [projectToDelete, setProjectToDelete] = useState<Project | null>(null);
     const [submitting, setSubmitting] = useState(false);
 
-    // Fetch projects
+    // dnd-kit sensors
+    const sensors = useSensors(
+        useSensor(PointerSensor),
+        useSensor(KeyboardSensor, {
+            coordinateGetter: sortableKeyboardCoordinates,
+        })
+    );
+
+    // Fetch projects ordered by 'order' field
     const fetchProjects = async () => {
         try {
-            const querySnapshot = await getDocs(collection(db, 'projects'));
+            const q = query(collection(db, 'projects'), orderBy('order', 'asc'));
+            const querySnapshot = await getDocs(q);
             const projectsData = querySnapshot.docs.map((doc) => {
                 const data = doc.data();
                 return {
                     id: doc.id,
                     ...data,
+                    order: data.order ?? 0,
+                    featured: data.featured ?? false,
                     createdAt: data.createdAt?.toDate() || new Date(),
                     updatedAt: data.updatedAt?.toDate() || data.createdAt?.toDate() || new Date(),
                 };
@@ -55,6 +122,33 @@ export default function ProyectosPage() {
         fetchProjects();
     }, []);
 
+    // Handle drag end - save new order to Firestore
+    const handleDragEnd = async (event: DragEndEvent) => {
+        const { active, over } = event;
+
+        if (over && active.id !== over.id) {
+            const oldIndex = projects.findIndex((p) => p.id === active.id);
+            const newIndex = projects.findIndex((p) => p.id === over.id);
+
+            const newProjects = arrayMove(projects, oldIndex, newIndex);
+            setProjects(newProjects);
+
+            // Batch update order in Firestore
+            try {
+                const batch = writeBatch(db);
+                newProjects.forEach((project, index) => {
+                    const projectRef = doc(db, 'projects', project.id);
+                    batch.update(projectRef, { order: index });
+                });
+                await batch.commit();
+            } catch (error) {
+                console.error('Error updating order:', error);
+                // Revert on error
+                fetchProjects();
+            }
+        }
+    };
+
     // Handle create/edit
     const handleSubmit = async (formData: FormData) => {
         setSubmitting(true);
@@ -65,6 +159,7 @@ export default function ProyectosPage() {
             const category = formData.get('category') as string;
             const location = formData.get('location') as string;
             const year = formData.get('year') as string;
+            const featured = formData.get('featured') === 'true';
             const imageFile = formData.get('image') as File | null;
             const currentImageUrl = formData.get('currentImageUrl') as string | null;
 
@@ -95,6 +190,7 @@ export default function ProyectosPage() {
                 location,
                 year,
                 imageUrl,
+                featured,
                 updatedAt: new Date(),
             };
 
@@ -102,9 +198,10 @@ export default function ProyectosPage() {
                 // Update existing project
                 await updateDoc(doc(db, 'projects', id), projectData);
             } else {
-                // Create new project
+                // Create new project with order at end
                 await addDoc(collection(db, 'projects'), {
                     ...projectData,
+                    order: projects.length,
                     createdAt: new Date(),
                 });
             }
@@ -179,6 +276,7 @@ export default function ProyectosPage() {
                     <h1 className="text-3xl font-bold">Gestión de Proyectos</h1>
                     <p className="text-muted-foreground mt-1">
                         {projects.length} proyecto{projects.length !== 1 ? 's' : ''} en total
+                        <span className="ml-2 text-xs">(Arrastra para reordenar)</span>
                     </p>
                 </div>
                 <div className="flex items-center gap-2">
@@ -204,16 +302,27 @@ export default function ProyectosPage() {
                     </Button>
                 </div>
             ) : (
-                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-                    {projects.map((project) => (
-                        <ProjectCard
-                            key={project.id}
-                            project={project}
-                            onEdit={handleEdit}
-                            onDelete={handleDeleteClick}
-                        />
-                    ))}
-                </div>
+                <DndContext
+                    sensors={sensors}
+                    collisionDetection={closestCenter}
+                    onDragEnd={handleDragEnd}
+                >
+                    <SortableContext
+                        items={projects.map((p) => p.id)}
+                        strategy={rectSortingStrategy}
+                    >
+                        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+                            {projects.map((project) => (
+                                <SortableProjectCard
+                                    key={project.id}
+                                    project={project}
+                                    onEdit={handleEdit}
+                                    onDelete={handleDeleteClick}
+                                />
+                            ))}
+                        </div>
+                    </SortableContext>
+                </DndContext>
             )}
 
             <ProjectDialog
