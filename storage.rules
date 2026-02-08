@@ -2,11 +2,19 @@ rules_version = '2';
 
 service firebase.storage {
   match /b/{bucket}/o {
-    // Public read access for project images
+    // Helper function to check if user is admin
+    function isAdmin() {
+      return request.auth != null && 
+             firestore.exists(/databases/(default)/documents/admins/$(request.auth.uid));
+    }
+    
+    // Reglas para imágenes de proyectos
     match /projects/{imageId} {
+      // Todos pueden leer imágenes (sitio público)
       allow read: if true;
-      // Only admin via Firebase Console can upload/delete
-      allow write: if false;
+      
+      // Solo administradores pueden subir y eliminar imágenes
+      allow write, delete: if isAdmin();
     }
   }
 }

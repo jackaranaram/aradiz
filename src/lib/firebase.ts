@@ -1,6 +1,7 @@
 import { initializeApp, getApps, type FirebaseApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
+import { getAuth } from "firebase/auth";
 import { getAnalytics, isSupported, type Analytics } from "firebase/analytics";
 
 const firebaseConfig = {
@@ -17,6 +18,7 @@ const firebaseConfig = {
 const app: FirebaseApp = getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0];
 const db = getFirestore(app);
 const storage = getStorage(app);
+const auth = getAuth(app);
 
 // Analytics initialization (only in browser)
 let analytics: Analytics | null = null;
@@ -31,4 +33,4 @@ export const initAnalytics = async (): Promise<Analytics | null> => {
     return analytics;
 };
 
-export { app, db, storage, analytics };
+export { app, db, storage, auth, analytics };
