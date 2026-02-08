@@ -46,13 +46,18 @@ export default async function ProjectsPage() {
                                         spanClass
                                     )}
                                 >
-                                    {/* Image */}
-                                    <div className="absolute inset-0 z-0 bg-foreground">
+                                    {/* Image with Skeleton */}
+                                    <div className="absolute inset-0 z-0 bg-muted">
+                                        {/* Skeleton shimmer effect - visible until image loads */}
+                                        <div className="absolute inset-0 bg-gradient-to-r from-muted via-muted-foreground/10 to-muted animate-pulse" />
+                                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full animate-[shimmer_2s_infinite]" />
+
                                         <Image
                                             src={project.imageUrl}
                                             alt={project.title}
                                             fill
-                                            className="object-cover transition-transform duration-700 group-hover:scale-110"
+                                            priority={index < 3}
+                                            className="object-cover transition-all duration-700 group-hover:scale-110"
                                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                         />
                                         {/* Default gradient overlay to keep category readable */}
