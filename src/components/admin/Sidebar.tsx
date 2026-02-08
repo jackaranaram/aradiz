@@ -49,8 +49,8 @@ export function Sidebar() {
                             href={item.href}
                             onClick={() => setMobileMenuOpen(false)}
                             className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${isActive
-                                    ? 'bg-primary text-primary-foreground'
-                                    : 'text-muted-foreground hover:bg-accent hover:text-accent-foreground'
+                                ? 'bg-primary text-primary-foreground'
+                                : 'text-muted-foreground  hover:text-primary'
                                 }`}
                         >
                             <Icon className="w-5 h-5" />
@@ -83,7 +83,7 @@ export function Sidebar() {
     return (
         <>
             {/* Mobile menu button */}
-            <div className="md:hidden fixed top-0 left-0 right-0 z-50 bg-background border-b border-border p-4 flex items-center justify-between">
+            <div className="lg:hidden fixed top-0 left-0 right-0 z-50 bg-background border-b border-border p-4 flex items-center justify-between">
                 <h1 className="text-lg font-bold">Aradiz Admin</h1>
                 <Button
                     variant="ghost"
@@ -95,7 +95,7 @@ export function Sidebar() {
             </div>
 
             {/* Desktop sidebar */}
-            <aside className="hidden md:flex md:flex-col md:w-64 md:fixed md:inset-y-0 bg-card border-r border-border">
+            <aside className="hidden lg:flex lg:flex-col lg:w-64 lg:fixed lg:inset-y-0 bg-card border-r border-border">
                 <SidebarContent />
             </aside>
 
@@ -104,12 +104,12 @@ export function Sidebar() {
                 <>
                     {/* Overlay */}
                     <div
-                        className="md:hidden fixed inset-0 bg-background/80 backdrop-blur-sm z-40"
+                        className="lg:hidden fixed inset-0 bg-background/80 backdrop-blur-sm z-40"
                         onClick={() => setMobileMenuOpen(false)}
                     />
 
                     {/* Sidebar */}
-                    <aside className="md:hidden fixed inset-y-0 left-0 w-64 bg-card border-r border-border z-50 flex flex-col">
+                    <aside className="lg:hidden fixed inset-y-0 left-0 w-64 bg-card border-r border-border z-50 flex flex-col">
                         <SidebarContent />
                     </aside>
                 </>

@@ -60,6 +60,7 @@ export function CTASection({
                         <Button
                             asChild
                             variant="outline"
+                            className="text-white"
                         >
                             <Link href="/contacto">
                                 Solicitar Cotización
