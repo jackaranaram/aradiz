@@ -34,10 +34,15 @@ export default function ProyectosPage() {
     const fetchProjects = async () => {
         try {
             const querySnapshot = await getDocs(collection(db, 'projects'));
-            const projectsData = querySnapshot.docs.map((doc) => ({
-                id: doc.id,
-                ...doc.data(),
-            })) as Project[];
+            const projectsData = querySnapshot.docs.map((doc) => {
+                const data = doc.data();
+                return {
+                    id: doc.id,
+                    ...data,
+                    createdAt: data.createdAt?.toDate() || new Date(),
+                    updatedAt: data.updatedAt?.toDate() || data.createdAt?.toDate() || new Date(),
+                };
+            }) as Project[];
             setProjects(projectsData);
         } catch (error) {
             console.error('Error fetching projects:', error);

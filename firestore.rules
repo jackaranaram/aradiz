@@ -16,8 +16,8 @@ service cloud.firestore {
       // Solo administradores pueden leer leads
       allow read: if isAdmin();
       
-      // Nadie puede actualizar o eliminar leads
-      allow update, delete: if false;
+      // Solo administradores pueden actualizar o eliminar leads
+      allow update, delete: if isAdmin();
     }
     
     // Reglas para la colección de emails (MailerSend Extension)
