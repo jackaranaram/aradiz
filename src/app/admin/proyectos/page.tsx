@@ -217,6 +217,7 @@ export default function ProyectosPage() {
             )}
 
             <ProjectDialog
+                key={selectedProject ? `edit-${selectedProject.id}` : 'create'}
                 open={dialogOpen}
                 onOpenChange={setDialogOpen}
                 onSubmit={handleSubmit}

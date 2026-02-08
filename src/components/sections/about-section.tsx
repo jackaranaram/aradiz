@@ -2,34 +2,8 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { CheckCircle, Award, Clock, Users } from "lucide-react";
 
-const features = [
-    {
-        icon: CheckCircle,
-        title: "Cumplimiento Técnico",
-        description:
-            "Ejecutamos cada proyecto siguiendo especificaciones técnicas precisas y estándares de calidad.",
-    },
-    {
-        icon: Award,
-        title: "Experiencia Comprobada",
-        description:
-            "Años de experiencia trabajando con estudios de arquitectura, constructoras y desarrolladores.",
-    },
-    {
-        icon: Clock,
-        title: "Entrega a Tiempo",
-        description:
-            "Nos comprometemos con plazos realistas y los cumplimos, porque entendemos tu cronograma.",
-    },
-    {
-        icon: Users,
-        title: "Equipo Profesional",
-        description:
-            "Personal capacitado y especializado en fabricación e instalación de soluciones a medida.",
-    },
-];
+
 
 export function AboutSection() {
     return (

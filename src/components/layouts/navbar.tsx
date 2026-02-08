@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu } from 'lucide-react';
 import { siteConfig } from "@/config/site";
 import { Button } from "@/components/ui/button";
 import { FancyButton } from "@/components/shared/buttons/fancy-button";

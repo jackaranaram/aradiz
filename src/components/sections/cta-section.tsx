@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Phone } from "lucide-react";
-import { FancyButton } from "@/components/shared/buttons/fancy-button";
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 import { Button } from "../ui/button";

@@ -3,7 +3,6 @@ import { siteConfig } from "@/config/site";
 import {
   HeroSection,
   ServicesSection,
-  ProjectsSection,
   AboutSection,
   CTASection,
 } from "@/components/sections";

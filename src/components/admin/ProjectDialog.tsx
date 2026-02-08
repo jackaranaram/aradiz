@@ -1,12 +1,12 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
-import { Loader2, Trash2, Upload, X } from 'lucide-react';
+import { Loader2, Trash2, Upload } from 'lucide-react';
 import type { Project } from '@/types/project';
 import Image from 'next/image';
 
@@ -20,39 +20,15 @@ interface ProjectDialogProps {
 
 export function ProjectDialog({ open, onOpenChange, onSubmit, project, loading }: ProjectDialogProps) {
     const [formData, setFormData] = useState({
-        title: '',
-        description: '',
-        category: '',
-        location: '',
-        year: new Date().getFullYear().toString(),
+        title: project?.title || '',
+        description: project?.description || '',
+        category: project?.category || '',
+        location: project?.location || '',
+        year: project?.year || new Date().getFullYear().toString(),
     });
     const [imageFile, setImageFile] = useState<File | null>(null);
-    const [imagePreview, setImagePreview] = useState<string | null>(null);
+    const [imagePreview, setImagePreview] = useState<string | null>(project?.imageUrl || null);
 
-    // Reset form when dialog opens/closes or project changes
-    useEffect(() => {
-        if (open && project) {
-            setFormData({
-                title: project.title,
-                description: project.description,
-                category: project.category,
-                location: project.location,
-                year: project.year,
-            });
-            setImagePreview(project.imageUrl);
-            setImageFile(null);
-        } else if (!open) {
-            setFormData({
-                title: '',
-                description: '',
-                category: '',
-                location: '',
-                year: new Date().getFullYear().toString(),
-            });
-            setImageFile(null);
-            setImagePreview(null);
-        }
-    }, [open, project]);
 
     const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
