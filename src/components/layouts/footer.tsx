@@ -24,21 +24,27 @@ export function Footer() {
 
                         <div className="flex gap-4">
                             <Link
-                                href="#"
+                                href={siteConfig.social.linkedin}
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 className="w-10 h-10 rounded-full bg-background/5 flex items-center justify-center hover:bg-primary hover:text-white transition-all duration-300"
                                 aria-label="LinkedIn"
                             >
                                 <Linkedin className="h-5 w-5" />
                             </Link>
                             <Link
-                                href="#"
+                                href={siteConfig.social.facebook}
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 className="w-10 h-10 rounded-full bg-background/5 flex items-center justify-center hover:bg-primary hover:text-white transition-all duration-300"
                                 aria-label="Facebook"
                             >
                                 <Facebook className="h-5 w-5" />
                             </Link>
                             <Link
-                                href="#"
+                                href={siteConfig.social.instagram}
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 className="w-10 h-10 rounded-full bg-background/5 flex items-center justify-center hover:bg-primary hover:text-white transition-all duration-300"
                                 aria-label="Instagram"
                             >

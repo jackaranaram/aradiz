@@ -3,34 +3,37 @@
 
 env:
   # NEXT_PUBLIC_ variables are baked into the build at compile time.
-  # These must be available during BUILD for Next.js to inject them.
+  # Using 'secret' instead of 'value' to avoid GitHub security alerts.
+  # Make sure these secrets are created in Google Cloud Secret Manager.
   - variable: NEXT_PUBLIC_FIREBASE_API_KEY
-    value: AIzaSyDEzP7h0x4T_t2NnB3rgRYVcsinScfd3lo
+    secret: FIREBASE_API_KEY
     availability: [BUILD, RUNTIME]
   - variable: NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN
-    value: aradiz.firebaseapp.com
+    secret: FIREBASE_AUTH_DOMAIN
     availability: [BUILD, RUNTIME]
   - variable: NEXT_PUBLIC_FIREBASE_PROJECT_ID
-    value: aradiz
+    secret: FIREBASE_PROJECT_ID
     availability: [BUILD, RUNTIME]
   - variable: NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET
-    value: aradiz.firebasestorage.app
+    secret: FIREBASE_STORAGE_BUCKET
     availability: [BUILD, RUNTIME]
   - variable: NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID
-    value: "23755876683"
+    secret: FIREBASE_MESSAGING_SENDER_ID
     availability: [BUILD, RUNTIME]
   - variable: NEXT_PUBLIC_FIREBASE_APP_ID
-    value: 1:23755876683:web:62ff9955141d531a36e0ce
+    secret: FIREBASE_APP_ID
     availability: [BUILD, RUNTIME]
   - variable: NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID
-    value: G-1WPN212PC4
+    secret: FIREBASE_MEASUREMENT_ID
     availability: [BUILD, RUNTIME]
 
-  # Other variables for server-side use only
-  # Standard variables
-  - variable: MAILERSEND_FROM_EMAIL
-    value: noreply@test-68zxl2713ne4j905.mlsender.net
-  - variable: MAILERSEND_TO_EMAIL
-    value: jackaranaramos@gmail.com
-  - variable: MAILERSEND_TEMPLATE_ID
-    value: z3m5jgr0780gdpyo
+  # MailerSend Configuration (needed for client-side contact form)
+  - variable: NEXT_PUBLIC_MAILERSEND_FROM_EMAIL
+    secret: MAILERSEND_FROM_EMAIL
+    availability: [BUILD, RUNTIME]
+  - variable: NEXT_PUBLIC_MAILERSEND_TO_EMAIL
+    secret: MAILERSEND_TO_EMAIL
+    availability: [BUILD, RUNTIME]
+  - variable: NEXT_PUBLIC_MAILERSEND_TEMPLATE_ID
+    secret: MAILERSEND_TEMPLATE_ID
+    availability: [BUILD, RUNTIME]

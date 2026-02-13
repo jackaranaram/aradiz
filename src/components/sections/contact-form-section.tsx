@@ -56,26 +56,24 @@ export function ContactFormSection({ className = "" }: ContactFormSectionProps) 
                 updatedAt: now,
             });
 
-            console.log("Lead guardado con ID:", leadRef.id);
-
             // 2. Crear documento para envío de email (la extensión MailerSend lo procesa)
             await addDoc(collection(db, "emails"), {
                 to: [{
-                    email: "liz.arana55@gmail.com",
-                    name: "Equipo Aradiz"
+                    email: process.env.NEXT_PUBLIC_MAILERSEND_TO_EMAIL,
+                    name: "Lizbeth Arana Ramos"
                 }],
                 from: {
-                    email: "noreply@test-68zxl2713ne4j905.mlsender.net",
-                    name: "Formulario Aradiz",
+                    email: process.env.NEXT_PUBLIC_MAILERSEND_FROM_EMAIL,
+                    name: "Aradiz Web Form",
                 },
                 reply_to: {
                     email: formData.email,
                     name: formData.name
                 },
-                template_id: "z3m5jgr0780gdpyo",
+                template_id: process.env.NEXT_PUBLIC_MAILERSEND_TEMPLATE_ID,
                 personalization: [
                     {
-                        email: "liz.arana55@gmail.com",
+                        email: process.env.NEXT_PUBLIC_MAILERSEND_TO_EMAIL,
                         data: {
                             name: formData.name,
                             email: formData.email,

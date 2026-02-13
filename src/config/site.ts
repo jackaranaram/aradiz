@@ -26,17 +26,17 @@ export const siteConfig = {
   // Contacto
   contact: {
     phone: "+51 981 394 484", // Reemplazar con número real
-    email: "contacto@aradiz.com",
+    email: "contact@aradiz.com",
     whatsapp: "+51981394484", // Número de WhatsApp sin espacios
-    whatsappMessage: "Hola, me interesa solicitar una cotización de 10000 para un proyecto.",
+    whatsappMessage: "Hola, me interesa solicitar una cotización para un proyecto.",
     address: "Lima, Perú", // Reemplazar con dirección real
   },
 
   // Redes sociales (si aplica)
   social: {
-    linkedin: "https://github.com/aradiz-company/aradiz",
-    instagram: "https://github.com/aradiz-company/aradiz",
-    facebook: "https://github.com/aradiz-company/aradiz",
+    linkedin: "https://www.linkedin.com/in/aradiz",
+    instagram: "https://www.instagram.com/aradiz",
+    facebook: "https://www.facebook.com/aradiz",
   },
 
   // Navegación principal
