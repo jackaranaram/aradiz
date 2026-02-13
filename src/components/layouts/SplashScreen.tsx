@@ -7,7 +7,7 @@ interface SplashScreenProps {
     minDuration?: number; // Minimum display time in ms
 }
 
-export function SplashScreen({ children, minDuration = 3000 }: SplashScreenProps) {
+export function SplashScreen({ children, minDuration = 1000 }: SplashScreenProps) {
     const [showSplash, setShowSplash] = useState(true);
     const [isExiting, setIsExiting] = useState(false);
 
@@ -35,31 +35,30 @@ export function SplashScreen({ children, minDuration = 3000 }: SplashScreenProps
 
             {/* Splash Screen Overlay */}
             <div
-                className={`fixed inset-0 z-[9999] flex items-center justify-center bg-[var(--aradiz-background)] transition-opacity duration-500 ${isExiting ? "opacity-0" : "opacity-100"
+                className={`fixed inset-0 z-[9999] flex items-center justify-center bg-background transition-opacity duration-500 ${isExiting ? "opacity-0" : "opacity-100"
                     }`}
             >
                 <div className="relative flex flex-col items-center justify-center gap-6">
                     {/* Animated rings container */}
                     <div className="relative flex items-center justify-center">
                         {/* Outer ring - ping effect */}
-                        <div className="absolute h-28 w-28 rounded-full border-2 border-[var(--aradiz-accent)] opacity-20 animate-ping" />
+                        <div className="absolute h-28 w-28 rounded-full border-2 border-accent opacity-20 animate-ping" />
 
                         {/* Middle ring - slow pulse */}
                         <div
-                            className="absolute h-24 w-24 rounded-full border border-[var(--aradiz-primary)] opacity-40"
+                            className="absolute h-24 w-24 rounded-full border border-primary opacity-40"
                             style={{ animation: "pulse 2s ease-in-out infinite" }}
                         />
 
                         {/* Inner ring - rotating */}
                         <div
-                            className="absolute h-20 w-20 rounded-full border-t-2 border-r-2 border-[var(--aradiz-accent)] opacity-60"
+                            className="absolute h-20 w-20 rounded-full border-t-2 border-r-2 border-accent opacity-60"
                             style={{ animation: "spin 1.5s linear infinite" }}
                         />
 
                         {/* Letter A container */}
                         <div
-                            className="relative flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-[var(--aradiz-primary)] to-[var(--aradiz-secondary)] shadow-2xl"
-                            style={{ animation: "float 2s ease-in-out infinite" }}
+                            className="relative flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-primary to-secondary shadow-2xl"
                         >
                             <span className="text-3xl font-bold text-white tracking-tight select-none">
                                 A
@@ -69,13 +68,13 @@ export function SplashScreen({ children, minDuration = 3000 }: SplashScreenProps
 
                     {/* Brand name with fade-in */}
                     <div
-                        className="text-[var(--aradiz-primary)] font-semibold text-lg tracking-widest"
+                        className="text-primary font-semibold text-lg tracking-widest"
                         style={{
                             opacity: 0,
-                            animation: "fadeIn 1.5s ease-out 1s forwards"
+                            animation: "fadeIn 0.8s ease-out 0.3s forwards"
                         }}
                     >
-                        ARADIZ
+                        aradiz
                     </div>
                 </div>
 
