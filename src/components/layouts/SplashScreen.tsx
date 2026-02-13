@@ -7,7 +7,7 @@ interface SplashScreenProps {
     minDuration?: number; // Minimum display time in ms
 }
 
-export function SplashScreen({ children, minDuration = 2000 }: SplashScreenProps) {
+export function SplashScreen({ children, minDuration = 3000 }: SplashScreenProps) {
     const [showSplash, setShowSplash] = useState(true);
     const [isExiting, setIsExiting] = useState(false);
 
@@ -58,7 +58,7 @@ export function SplashScreen({ children, minDuration = 2000 }: SplashScreenProps
 
                         {/* Letter A container */}
                         <div
-                            className="relative flex h-16 w-16 items-center justify-center rounded-xl bg-gradient-to-br from-[var(--aradiz-primary)] to-[var(--aradiz-secondary)] shadow-2xl"
+                            className="relative flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-[var(--aradiz-primary)] to-[var(--aradiz-secondary)] shadow-2xl"
                             style={{ animation: "float 2s ease-in-out infinite" }}
                         >
                             <span className="text-3xl font-bold text-white tracking-tight select-none">
@@ -69,34 +69,16 @@ export function SplashScreen({ children, minDuration = 2000 }: SplashScreenProps
 
                     {/* Brand name with fade-in */}
                     <div
-                        className="text-[var(--aradiz-primary)] font-semibold text-lg tracking-widest opacity-0"
-                        style={{ animation: "fadeIn 0.8s ease-out 0.5s forwards" }}
+                        className="text-[var(--aradiz-primary)] font-semibold text-lg tracking-widest"
+                        style={{
+                            opacity: 0,
+                            animation: "fadeIn 1.5s ease-out 1s forwards"
+                        }}
                     >
                         ARADIZ
                     </div>
                 </div>
 
-                {/* Custom animations */}
-                <style jsx>{`
-                    @keyframes float {
-                        0%, 100% {
-                            transform: translateY(0) scale(1);
-                        }
-                        50% {
-                            transform: translateY(-6px) scale(1.02);
-                        }
-                    }
-                    @keyframes fadeIn {
-                        from {
-                            opacity: 0;
-                            transform: translateY(10px);
-                        }
-                        to {
-                            opacity: 1;
-                            transform: translateY(0);
-                        }
-                    }
-                `}</style>
             </div>
         </>
     );
