@@ -74,7 +74,7 @@
   --accent: var(--aradiz-accent);
   /* #4FB6B1 - Teal claro */
   --accent-foreground: oklch(0.2 0.01 0);
-  --destructive: oklch(0.577 0.245 27.325);
+  --destructive: oklch(47.786% 0.1954 28.104);
   --border: oklch(0.85 0.01 180);
   --input: oklch(0.85 0.01 180);
   --ring: oklch(0.42 0.08 185);
