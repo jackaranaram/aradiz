@@ -11,7 +11,7 @@ export default function PrivacyPage() {
     return (
         <div className="container mx-auto px-4 py-16 md:py-24 max-w-4xl">
             <div className="mb-12">
-                <h1 className="cursor-pointer text-4xl md:text-5xl font-bold mt-16 mb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent inline-block">
+                <h1 className="cursor-pointer text-4xl md:text-5xl font-bold mt-16 mb-4 bg-linear-to-r from-primary to-secondary bg-clip-text text-transparent inline-block">
                     Política de Privacidad
                 </h1>
                 <p className="text-muted-foreground text-lg">
