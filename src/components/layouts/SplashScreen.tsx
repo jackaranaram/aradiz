@@ -55,26 +55,6 @@ export function SplashScreen({ children, minDuration = 1000 }: SplashScreenProps
                             className="absolute h-20 w-20 rounded-full border-t-2 border-r-2 border-accent opacity-60"
                             style={{ animation: "spin 1.5s linear infinite" }}
                         />
-
-                        {/* Letter A container */}
-                        <div
-                            className="relative flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-primary to-secondary shadow-2xl"
-                        >
-                            <span className="text-3xl font-bold text-white tracking-tight select-none">
-                                A
-                            </span>
-                        </div>
-                    </div>
-
-                    {/* Brand name with fade-in */}
-                    <div
-                        className="text-primary font-semibold text-lg tracking-widest"
-                        style={{
-                            opacity: 0,
-                            animation: "fadeIn 0.8s ease-out 0.3s forwards"
-                        }}
-                    >
-                        aradiz
                     </div>
                 </div>
 
