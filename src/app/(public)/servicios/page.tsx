@@ -41,6 +41,7 @@ export default function ServicesPage() {
                                             fill
                                             className="object-cover"
                                             sizes="(max-width: 768px) 100vw, 40vw"
+                                            priority={index === 0}
                                         />
                                     </div>
                                 </div>
