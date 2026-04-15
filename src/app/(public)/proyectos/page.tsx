@@ -144,9 +144,15 @@ export default async function ProjectsPage() {
                         </div>
                     ) : (
                         <div className="relative flex flex-col items-center justify-center py-24 px-6 text-center w-full min-h-[500px] overflow-hidden bg-card/30 rounded-3xl border border-border/50">
-                            {/* Background Blueprint / Puzzle Pattern */}
-                            <div className="absolute inset-0 z-0 opacity-10">
-                                <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
+                            {/* Background Puzzle Pattern */}
+                            <div className="absolute inset-0 z-0 opacity-15">
+                                <div
+                                    className="absolute inset-0"
+                                    style={{
+                                        backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 100 100'%3E%3Cpath d='M0 50H35C35 30 65 30 65 50H100M50 0V35C70 35 70 65 50 65V100' stroke='%230E6F73' stroke-width='1.5' fill='none'/%3E%3C/svg%3E")`,
+                                        backgroundSize: "80px 80px"
+                                    }}
+                                />
                                 <div className="absolute left-0 right-0 top-0 -z-10 m-auto h-[310px] w-[310px] rounded-full bg-(--aradiz-primary) opacity-20 blur-[100px]" />
                             </div>
 
