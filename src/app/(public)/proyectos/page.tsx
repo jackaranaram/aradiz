@@ -143,30 +143,41 @@ export default async function ProjectsPage() {
                             })()}
                         </div>
                     ) : (
-                        <div className="flex flex-col items-center justify-center py-24 px-6 text-center max-w-3xl mx-auto min-h-[500px]">
-                            <div className="relative mb-16 scale-110">
-                                {/* Decorative geometric shapes for empty state */}
-                                <div className="absolute -inset-8 border border-(--aradiz-primary)/20 rounded-full animate-pulse" />
-                                <div className="absolute -inset-12 border border-(--aradiz-accent)/10 rounded-full animate-ping [animation-duration:4s]" />
-                                <div className="relative flex h-28 w-28 items-center justify-center rounded-[2.5rem] bg-linear-to-br from-(--aradiz-primary) to-(--aradiz-secondary) shadow-[0_20px_50px_rgba(14,111,115,0.3)] rotate-6 translate-y-3">
-                                    <span className="text-5xl font-bold text-white italic -rotate-6 tracking-tighter select-none">A</span>
-                                </div>
+                        <div className="relative flex flex-col items-center justify-center py-24 px-6 text-center w-full min-h-[500px] overflow-hidden bg-card/30 rounded-3xl border border-border/50">
+                            {/* Background Blueprint / Puzzle Pattern */}
+                            <div className="absolute inset-0 z-0 opacity-10">
+                                <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
+                                <div className="absolute left-0 right-0 top-0 -z-10 m-auto h-[310px] w-[310px] rounded-full bg-(--aradiz-primary) opacity-20 blur-[100px]" />
                             </div>
 
-                            <h2 className="text-4xl md:text-6xl font-bold text-(--aradiz-primary) mb-8 tracking-tight leading-none">
-                                Visiones en proceso de <br className="hidden md:block" /> transformación.
-                            </h2>
-                            <p className="text-xl md:text-2xl text-muted-foreground/80 mb-14 leading-relaxed font-light max-w-2xl px-4">
-                                Estamos documentando nuestros primeros proyectos destacados. Cada espacio cuenta una historia de diseño y funcionalidad que pronto compartiremos contigo.
-                            </p>
+                            <div className="relative z-10 max-w-3xl mx-auto flex flex-col items-center">
+                                {/* Puzzle Icon replacing old logo */}
+                                <div className="relative mb-12 group perspective-1000">
+                                    <div className="absolute -inset-8 bg-(--aradiz-primary)/10 rounded-full blur-2xl animate-pulse group-hover:bg-(--aradiz-primary)/20 transition-all duration-700" />
+                                    
+                                    <div className="relative flex h-28 w-28 items-center justify-center rounded-2xl bg-gradient-to-br from-(--aradiz-primary)/10 to-(--aradiz-secondary)/10 border border-(--aradiz-primary)/20 shadow-xl backdrop-blur-md transform-gpu transition-all duration-700 group-hover:rotate-12 group-hover:scale-110">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className="text-(--aradiz-primary)">
+                                            <path d="M19.439 7.842a2.38 2.38 0 0 0-2.022-2.022 2.38 2.38 0 0 0-2.83 2.83l-2.003-2.003a2.38 2.38 0 0 1-2.91-.703 2.38 2.38 0 1 0-3.66-3.66 2.38 2.38 0 0 1 .703 2.91L4.714 7.167a2.38 2.38 0 0 0-2.83 2.83 2.38 2.38 0 0 0 2.022 2.022L6.1 14.21A2.38 2.38 0 0 1 6.8 17.12a2.38 2.38 0 1 0 3.66 3.66 2.38 2.38 0 0 1-.703-2.91l2.003-2.003a2.38 2.38 0 0 0 2.83-2.83 2.38 2.38 0 0 0-2.022-2.022Z"/>
+                                        </svg>
+                                    </div>
+                                </div>
 
-                            <div className="p-px bg-linear-to-r from-(--aradiz-primary) via-(--aradiz-accent) to-(--aradiz-primary) rounded-full group transition-all active:scale-95 duration-300 hover:shadow-2xl hover:shadow-(--aradiz-primary)/30">
-                                <a
-                                    href="/contacto"
-                                    className="block px-12 py-5 bg-(--aradiz-background) text-(--aradiz-primary) font-black rounded-full transition-all group-hover:bg-transparent group-hover:text-white uppercase tracking-[0.2em] text-xs shadow-inner"
-                                >
-                                    SÉ EL PRIMERO EN INICIAR
-                                </a>
+                                <h2 className="text-4xl md:text-6xl font-bold text-(--aradiz-primary) mb-6 tracking-tight leading-none">
+                                    Las piezas de nuestro portafolio <br className="hidden md:block" /> se están armando.
+                                </h2>
+                                <p className="text-xl md:text-2xl text-muted-foreground/80 mb-12 leading-relaxed font-light max-w-2xl px-4">
+                                    Mientras organizamos nuestros mejores trabajos, estamos listos para construir el tuyo.
+                                </p>
+
+                                <div className="p-px bg-linear-to-r from-(--aradiz-primary) via-(--aradiz-accent) to-(--aradiz-primary) rounded-full group transition-all active:scale-95 duration-300 hover:shadow-2xl hover:shadow-(--aradiz-primary)/30">
+                                    <a
+                                        href="/contacto"
+                                        className="flex flex-col items-center justify-center px-8 md:px-12 py-4 bg-(--aradiz-background) text-(--aradiz-primary) font-black rounded-full transition-all group-hover:bg-transparent group-hover:text-white uppercase shadow-inner"
+                                    >
+                                        <span className="tracking-[0.15em] text-lg md:text-xl">INICIA TU PROYECTO HOY</span>
+                                        <span className="text-[10px] md:text-xs font-semibold opacity-70 group-hover:opacity-100 tracking-wider mt-1">¡Y OBTÉN UN DESCUENTO EXCLUSIVO VÍA WEB!</span>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     )}
