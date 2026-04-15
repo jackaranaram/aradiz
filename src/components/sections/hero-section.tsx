@@ -1,18 +1,41 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { FancyButton } from "@/components/shared/buttons/fancy-button";
 
 import { useState, useEffect, useCallback } from "react";
 
-// Imágenes del carrusel - agrega tus imágenes aquí
-const carouselImages = [
-  "/images/hero-background.jpeg",
-  "/images/hero-background-2.jpeg",
-  "/images/hero-background-3.jpeg",
+// Slides del carrusel — cada uno tiene imagen y titular propio
+const slides = [
+  {
+    image: "/images/hero-background-2.jpeg",
+    prefix: "Ejecución profesional de",
+    highlight: "soluciones a medida",
+    suffix: "para proyectos residenciales y comerciales",
+  },
+  {
+    image: "/images/hero-background-3.png",
+    prefix: "Fabricación e instalación de",
+    highlight: "mobiliario exclusivo",
+    suffix: "que transforma cada rincón de tu espacio",
+  },
+  {
+    image: "/images/hero-background-4.png",
+    prefix: "Control solar y confort térmico con",
+    highlight: "cortinas técnicas",
+    suffix: "de alta precisión y elegancia",
+  },
+  {
+    image: "/images/hero-background-5.png",
+    prefix: "Arquitectura transparente con",
+    highlight: "sistemas de vidrio",
+    suffix: "templado para espacios modernos y seguros",
+  },
 ];
+
+const carouselImages = slides.map((s) => s.image);
 
 export function HeroSection() {
   const [offset, setOffset] = useState(0);
@@ -68,6 +91,13 @@ export function HeroSection() {
       setOffset(offset - carouselImages.length);
     }
   }, [offset]);
+
+  // Índice activo calculado a partir del offset
+  const currentActiveIndex =
+    (((carouselImages.length - (offset % carouselImages.length)) %
+      carouselImages.length) +
+      carouselImages.length) %
+    carouselImages.length;
 
   // Auto-play del carrusel
   useEffect(() => {
@@ -127,16 +157,22 @@ export function HeroSection() {
         <div className="container mx-auto h-full px-4 md:px-6 relative flex flex-col justify-center items-start">
           {/* Contenido de texto */}
           <div className="max-w-3xl pointer-events-auto">
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              className="text-5xl md:text-7xl font-extrabold tracking-tighter text-foreground mb-8 leading-[1.1]"
-            >
-              Ejecución profesional de{" "}
-              <span className="text-primary">soluciones a medida</span> para
-              proyectos residenciales y comerciales
-            </motion.h1>
+            <AnimatePresence mode="wait">
+              <motion.h1
+                key={currentActiveIndex}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.5, ease: "easeInOut" }}
+                className="text-5xl md:text-7xl font-extrabold tracking-tighter text-foreground mb-8 leading-[1.1]"
+              >
+                {slides[currentActiveIndex].prefix}{" "}
+                <span className="text-primary">
+                  {slides[currentActiveIndex].highlight}
+                </span>{" "}
+                {slides[currentActiveIndex].suffix}
+              </motion.h1>
+            </AnimatePresence>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -151,23 +187,18 @@ export function HeroSection() {
 
           {/* Indicadores de slides */}
           <div className="absolute bottom-10 left-0 flex gap-2 cursor-pointer pointer-events-auto px-4 md:px-6">
-            {carouselImages.map((image, index) => {
-              const currentActiveIndex = Math.abs(
-                (carouselImages.length - offset) % carouselImages.length,
-              );
-              return (
-                <button
-                  key={index}
-                  onClick={() => goToSlide(index)}
-                  className={`h-2 rounded-full transition-all duration-300 ${
-                    index === currentActiveIndex
-                      ? "w-8 bg-primary"
-                      : "w-2 bg-foreground/30 hover:bg-foreground/50"
-                  }`}
-                  aria-label={`Ir a imagen ${index + 1}`}
-                />
-              );
-            })}
+            {carouselImages.map((_image, index) => (
+              <button
+                key={index}
+                onClick={() => goToSlide(index)}
+                className={`h-2 rounded-full transition-all duration-300 ${
+                  index === currentActiveIndex
+                    ? "w-8 bg-primary"
+                    : "w-2 bg-foreground/30 hover:bg-foreground/50"
+                }`}
+                aria-label={`Ir a imagen ${index + 1}`}
+              />
+            ))}
           </div>
 
           {/* Controles de navegación */}
