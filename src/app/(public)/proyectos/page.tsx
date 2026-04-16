@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import Image from "next/image";
+import { Puzzle, ArrowRight } from "lucide-react";
 
 import { PageHeroSection, CTASection } from "@/components/sections";
 import { cn } from "@/lib/utils";
@@ -144,14 +145,7 @@ export default async function ProjectsPage() {
                         </div>
                     ) : (
                         <div className="flex flex-col items-center justify-center py-24 px-6 text-center max-w-3xl mx-auto min-h-[500px]">
-                            <div className="relative mb-16 scale-110">
-                                {/* Decorative geometric shapes for empty state */}
-                                <div className="absolute -inset-8 border border-(--aradiz-primary)/20 rounded-full animate-pulse" />
-                                <div className="absolute -inset-12 border border-(--aradiz-accent)/10 rounded-full animate-ping [animation-duration:4s]" />
-                                <div className="relative flex h-28 w-28 items-center justify-center rounded-[2.5rem] bg-linear-to-br from-(--aradiz-primary) to-(--aradiz-secondary) shadow-[0_20px_50px_rgba(14,111,115,0.3)] rotate-6 translate-y-3">
-                                    <span className="text-5xl font-bold text-white italic -rotate-6 tracking-tighter select-none">A</span>
-                                </div>
-                            </div>
+                            <Puzzle className="w-20 h-20 text-muted-foreground/20 mb-10" strokeWidth={1} />
 
                             <h2 className="text-4xl md:text-6xl font-bold text-(--aradiz-primary) mb-8 tracking-tight leading-none">
                                 Visiones en proceso de <br className="hidden md:block" /> transformación.
@@ -160,12 +154,18 @@ export default async function ProjectsPage() {
                                 Estamos documentando nuestros primeros proyectos destacados. Cada espacio cuenta una historia de diseño y funcionalidad que pronto compartiremos contigo.
                             </p>
 
-                            <div className="p-px bg-linear-to-r from-(--aradiz-primary) via-(--aradiz-accent) to-(--aradiz-primary) rounded-full group transition-all active:scale-95 duration-300 hover:shadow-2xl hover:shadow-(--aradiz-primary)/30">
+                            <div className="p-px bg-linear-to-r from-(--aradiz-primary)/50 via-(--aradiz-accent) to-(--aradiz-primary)/50 rounded-full group transition-all active:scale-95 duration-300 hover:shadow-2xl hover:shadow-(--aradiz-primary)/20">
                                 <a
                                     href="/contacto"
-                                    className="block px-12 py-5 bg-(--aradiz-background) text-(--aradiz-primary) font-black rounded-full transition-all group-hover:bg-transparent group-hover:text-white uppercase tracking-[0.2em] text-xs shadow-inner"
+                                    className="flex flex-col items-center px-10 md:px-16 py-5 bg-(--aradiz-background) text-(--aradiz-primary) rounded-full transition-all group-hover:bg-transparent group-hover:text-white"
                                 >
-                                    SÉ EL PRIMERO EN INICIAR
+                                    <span className="flex items-center gap-2 font-bold tracking-[0.15em] text-lg md:text-xl uppercase transition-transform group-hover:-translate-y-0.5">
+                                        Inicia tu proyecto hoy
+                                        <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+                                    </span>
+                                    <span className="text-[10px] md:text-xs font-medium opacity-60 group-hover:opacity-100 tracking-[0.1em] uppercase mt-1">
+                                        ¡Y obtén un descuento exclusivo vía web!
+                                    </span>
                                 </a>
                             </div>
                         </div>
