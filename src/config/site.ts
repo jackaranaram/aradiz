@@ -7,7 +7,7 @@ export const siteConfig = {
   name: "aradiz",
   tagline: "Grupo Corporativo",
   description:
-    "Ejecución profesional de soluciones a medida para proyectos de interior y obra. Desde fabricación hasta instalación, con foco en cumplimiento técnico y eficiencia.",
+    "Ejecución profesional de soluciones a medida para proyectos residenciales y comerciales. Desde fabricación hasta instalación, con foco en cumplimiento técnico y eficiencia.",
   url: "https://aradiz.com",
   author: "aradiz Grupo Corporativo",
 
