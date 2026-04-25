@@ -49,10 +49,10 @@
 :root {
   --radius: 0.625rem;
 
-  /* aradiz Brand Colors */
-  --aradiz-primary: #0e6f73;
-  --aradiz-secondary: #2f4f4f;
-  --aradiz-accent: #4fb6b1;
+  /* aradiz Brand Colors 279989 */
+  --aradiz-primary: #115e67;
+  --aradiz-secondary: #00313c;
+  --aradiz-accent: #00819d;
   --aradiz-text: #2e2e2e;
   --aradiz-background: #e6eceb;
 

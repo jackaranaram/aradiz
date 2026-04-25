@@ -30,7 +30,7 @@ export const siteConfig = {
     whatsapp: "+51981394484", // Número de WhatsApp sin espacios
     whatsappMessage:
       "¡Hola aradiz! Me gustaría solicitar una cotización para un proyecto.",
-    address: "Lima, Perú", // Reemplazar con dirección real
+    address: "San Isidro, Lima - Perú 🇵🇪", // Reemplazar con dirección real
   },
 
   // Redes sociales (si aplica)

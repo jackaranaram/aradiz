@@ -28,7 +28,7 @@ const slides = [
     suffix: "de alta precisión y elegancia",
   },
   {
-    image: "/images/hero-background-5.png",
+    image: "/images/hero-background-5.jpeg",
     prefix: "Arquitectura transparente con",
     highlight: "sistemas de vidrio",
     suffix: "templado para espacios modernos y seguros",
@@ -148,7 +148,7 @@ export function HeroSection() {
             </div>
           ))}
         </motion.div>
-        <div className="absolute inset-0 bg-linear-to-r from-background via-background/10 to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-r from-background via-background/15 to-transparent" />
         <div className="absolute inset-0 bg-linear-to-b from-background via-transparent to-transparent" />
       </div>
 
@@ -156,7 +156,7 @@ export function HeroSection() {
       <div className="absolute inset-0 z-20 pointer-events-none">
         <div className="container mx-auto h-full px-4 md:px-6 relative flex flex-col justify-center items-start">
           {/* Contenido de texto */}
-          <div className="max-w-3xl pointer-events-auto">
+          <div className="max-w-2xl pointer-events-auto">
             <AnimatePresence mode="wait">
               <motion.h1
                 key={currentActiveIndex}
