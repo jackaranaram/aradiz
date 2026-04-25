@@ -26,11 +26,11 @@ export const siteConfig = {
   // Contacto
   contact: {
     phone: "+51 981 394 484", // Reemplazar con número real
-    email: "proyectos@aradiz.com",
+    email: "contacto@aradiz.com",
     whatsapp: "+51981394484", // Número de WhatsApp sin espacios
     whatsappMessage:
       "¡Hola aradiz! Me gustaría solicitar una cotización para un proyecto.",
-    address: "San Isidro, Lima - Perú 🇵🇪", // Reemplazar con dirección real
+    address: "San Isidro, Lima - Perú", // Reemplazar con dirección real
   },
 
   // Redes sociales (si aplica)
