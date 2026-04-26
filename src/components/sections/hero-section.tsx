@@ -10,7 +10,7 @@ import { useState, useEffect, useCallback } from "react";
 // Slides del carrusel — cada uno tiene imagen y titular propio
 const slides = [
   {
-    image: "/images/hero-background-2.jpeg",
+    image: "/images/hero-background-2.png",
     prefix: "Ejecución profesional de",
     highlight: "soluciones a medida",
     suffix: "para proyectos residenciales y comerciales",
@@ -28,7 +28,7 @@ const slides = [
     suffix: "de alta precisión y elegancia",
   },
   {
-    image: "/images/hero-background-5.jpeg",
+    image: "/images/hero-background-5.png",
     prefix: "Arquitectura transparente con",
     highlight: "sistemas de vidrio",
     suffix: "templado para espacios modernos y seguros",
@@ -148,7 +148,7 @@ export function HeroSection() {
             </div>
           ))}
         </motion.div>
-        <div className="absolute inset-0 bg-linear-to-r from-background via-background/15 to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-r from-background via-background/40 to-transparent" />
         <div className="absolute inset-0 bg-linear-to-b from-background via-transparent to-transparent" />
       </div>
 
