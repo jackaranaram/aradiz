@@ -154,20 +154,6 @@ export default async function ProjectsPage() {
                                 Estamos documentando nuestros primeros proyectos destacados. Cada espacio cuenta una historia de diseño y funcionalidad que pronto compartiremos contigo.
                             </p>
 
-                            <div className="p-px bg-linear-to-r from-(--aradiz-primary)/50 via-(--aradiz-accent) to-(--aradiz-primary)/50 rounded-full group transition-all active:scale-95 duration-300 hover:shadow-2xl hover:shadow-(--aradiz-primary)/20">
-                                <a
-                                    href="/contacto"
-                                    className="flex flex-col items-center px-10 md:px-16 py-5 bg-(--aradiz-background) text-(--aradiz-primary) rounded-full transition-all group-hover:bg-transparent group-hover:text-white"
-                                >
-                                    <span className="flex items-center gap-2 font-bold tracking-[0.15em] text-lg md:text-xl uppercase transition-transform group-hover:-translate-y-0.5">
-                                        Inicia tu proyecto hoy
-                                        <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-                                    </span>
-                                    <span className="text-[10px] md:text-xs font-medium opacity-60 group-hover:opacity-100 tracking-[0.1em] uppercase mt-1">
-                                        ¡Y obtén un descuento exclusivo vía web!
-                                    </span>
-                                </a>
-                            </div>
                         </div>
                     )}
                 </div>
