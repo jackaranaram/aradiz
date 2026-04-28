@@ -7,6 +7,7 @@ interface PageHeroSectionProps {
   highlightedText?: string;
   description: string;
   className?: string;
+  id?: string;
 }
 
 export function PageHeroSection({
@@ -14,6 +15,7 @@ export function PageHeroSection({
   highlightedText,
   description,
   className = "mt-15",
+  id,
 }: PageHeroSectionProps) {
   // Split title to insert highlighted text if provided
   const renderTitle = () => {
@@ -33,7 +35,7 @@ export function PageHeroSection({
   };
 
   return (
-    <section className={`relative py-20 bg-background ${className}`}>
+    <section id={id} className={`relative py-20 bg-background ${className}`}>
       <div className="container mx-auto px-4 md:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

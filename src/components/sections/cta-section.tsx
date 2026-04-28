@@ -1,9 +1,9 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import { ArrowRight, Sparkles } from "lucide-react";
-import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 import { Button } from "../ui/button";
 
@@ -18,6 +18,15 @@ export function CTASection({
   description = "Conversemos sobre cómo podemos ayudarte a hacerlo realidad. Fabricación, ejecución e instalación con los más altos estándares de calidad.",
   className = "bg-secondary",
 }: CTASectionProps) {
+  const pathname = usePathname();
+
+  const handleContactClick = (e: React.MouseEvent) => {
+    if (pathname === "/contacto") {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
   return (
     <section
       className={cn("py-20 md:py-28 relative overflow-hidden", className)}
@@ -146,7 +155,7 @@ export function CTASection({
                   : "bg-primary text-primary-foreground hover:bg-primary/90 shadow-primary/20",
               )}
             >
-              <Link href="/contacto">
+              <Link href="/contacto" onClick={handleContactClick}>
                 Inicia tu proyecto hoy
                 <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
               </Link>
