@@ -11,7 +11,7 @@ import { values, differentiators } from "@/data/values";
 export const metadata: Metadata = {
   title: "Nosotros",
   description:
-    "Empresa especializada en fabricación, ejecución e instalación de soluciones a medida para proyectos de interior y obra. Enfoque en cumplimiento técnico y eficiencia.",
+    "Empresa especializada en fabricación, ejecución e instalación de soluciones a medida para proyectos residenciales y comerciales. Enfoque en cumplimiento técnico y eficiencia.",
 };
 
 export default function AboutPage() {
@@ -20,7 +20,7 @@ export default function AboutPage() {
       <PageHeroSection
         title="Sobre nosotros"
         highlightedText="nosotros"
-        description="Empresa especializada en la fabricación, ejecución e instalación de soluciones a medida para proyectos de interior y obra. Nos enfocamos en el cumplimiento técnico y la eficiencia, trabajando con empresas, estudios de arquitectura, constructoras y desarrolladores inmobiliarios."
+        description="Empresa especializada en la fabricación, ejecución e instalación de soluciones a medida para proyectos residenciales y comerciales. Nos enfocamos en el cumplimiento técnico y la eficiencia, trabajando con empresas, estudios de arquitectura, constructoras y desarrolladores inmobiliarios."
       />
 
       {/* Mission Section */}
